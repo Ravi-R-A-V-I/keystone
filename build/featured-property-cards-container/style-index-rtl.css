@@ -1,0 +1,82 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/featured-property-cards-container/style.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/* 1. Main Container: Locked to 1050px and centered */
+.featured-properties-container {
+  max-width: 1050px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* 2. Track: Fills container and enables smooth horizontal scrolling */
+.featured-properties-track {
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  scroll-snap-type: x mandatory;
+}
+.featured-properties-track .wp-block-post {
+  scroll-snap-align: start;
+}
+
+.featured-properties-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* 3. Kill Gutenberg defaults and force a strict single-line flex row */
+.featured-properties-track .wp-block-query,
+.featured-properties-track .wp-block-post-template {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* 4. Lock individual card widths so they never squish or wrap */
+.featured-properties-track .wp-block-post,
+.featured-properties-track .wp-block-post-template > li {
+  flex: 0 0 310px !important; /* Perfect card sizing */
+  width: 310px !important;
+}
+
+/* 5. Floating Modern Arrows */
+.featured-properties-btn {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #eaeaea;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+.featured-properties-btn:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn {
+  display: none;
+  right: -22px;
+}
+
+.next-btn {
+  left: -22px;
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/keystone-search",
+  "version": "0.1.0",
+  "title": "Keystone Search Block",
+  "category": "widgets",
+  "icon": "search",
+  "description": "Keystone Search Block.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "attributes": {
+    "size": {
+      "type": "string",
+      "default": "medium"
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    }
+  },
+  "textdomain": "keystone-search",
+  "editorScript": "file:./index.js",
+  "editorStyle": ["file:./index.css", "dashicons"],
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}

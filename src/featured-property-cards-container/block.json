@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/featured-property-cards-container",
+  "version": "0.1.0",
+  "title": "Featured Property Cards Container",
+  "category": "widgets",
+  "icon": "category",
+  "description": "Featured Property Cards Container.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "textdomain": "featured-property-cards-container",
+  "editorScript": "file:./index.js",
+  "editorStyle": ["file:./index.css", "dashicons"],
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}

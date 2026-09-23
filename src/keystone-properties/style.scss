@@ -1,0 +1,480 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.keystone-map-interface {
+  display: flex;
+  max-width: 1440px;
+  box-sizing: border-box;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.keystone-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+#search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 2000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+    border-radius: 10px;
+  }
+}
+
+.suggestion-item {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+.keystone-search-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 15px;
+  padding: 4px 12px;
+  flex-grow: 1;
+  max-width: 380px;
+
+  input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 8px;
+    flex-grow: 1;
+    font-size: 14px;
+  }
+
+  button {
+    display: flex;
+    background: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  button:hover {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+  }
+}
+
+.keystone-dropdown {
+  position: relative;
+}
+
+.keystone-dropdown-toggle {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.keystone-dropdown-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  padding: 20px;
+  width: 280px;
+  z-index: 50;
+
+  &.is-open {
+    display: block;
+  }
+
+  .values:has(input[type="radio"]) {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+  }
+}
+
+.keystone-split-stage {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  /* CRITICAL: Leaflet maps disappear if they don't have a defined height. */
+  height: 700px;
+}
+
+.keystone-map-container {
+  flex: 1;
+  background-color: #f3f4f6;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+}
+
+.keystone-results-container {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+  gap: 20px; /* Adds breathing room between the cards */
+  align-items: start;
+  padding-right: 8px;
+  grid-auto-rows: max-content;
+}
+
+/* Hide all images by default */
+.property-image {
+  display: none;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  /* Add object-fit if you want them to crop nicely! */
+}
+
+/* Only show the active image */
+.property-image.is-active {
+  display: block;
+}
+
+.property-card {
+  height: max-content;
+}
+
+#keystone-loader {
+  /* Default State: 0px tall, no gap, but physically present for the observer */
+  grid-column: 1 / -1;
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border: 0 solid transparent;
+  border-radius: 50%;
+  animation: keystone-spin 0.8s linear infinite;
+  &.is-fetching {
+    /* Active State: Snaps open to 32px when JavaScript adds this class */
+    width: 32px;
+    height: 32px;
+    margin: 20px auto;
+    border: 4px solid #f3f3f3;
+    border-top-color: #2563eb;
+  }
+}
+
+.slider-track-container {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-size: 100% 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.keystone-range {
+  width: 100%;
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+  }
+
+  &::-ms-thumb {
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+  }
+
+  &::-moz-range-track {
+    background-color: transparent;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  &::-webkit-slider-runnable-track {
+    background-color: transparent;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  &:active::-webkit-slider-thumb {
+    background-color: #3b82f6;
+    border: 3px solid #2563eb;
+  }
+}
+
+.keystone-price-range {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  pointer-events: none;
+
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 5px;
+  }
+
+  &::-moz-range-track {
+    appearance: none;
+    -moz-appearance: none;
+    height: 5px;
+  }
+
+  &::-ms-track {
+    appearance: none;
+    height: 5px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+    pointer-events: auto;
+  }
+
+  &::-ms-thumb {
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+    pointer-events: auto;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background-color: #2563eb;
+    cursor: pointer;
+    margin-top: -9px;
+    pointer-events: auto;
+  }
+
+  &:active::-webkit-slider-thumb {
+    background-color: #3b82f6;
+    border: 3px solid #2563eb;
+  }
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  color: #374151;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    margin: auto;
+    bottom: -14px;
+  }
+}
+
+.values-centered {
+  justify-content: center;
+}
+
+.keystone-empty-state {
+  padding: 30px;
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+
+  .empty-header {
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+
+    p {
+      font-size: 15px;
+      color: #54545a;
+      margin: 0;
+    }
+  }
+
+  .empty-tips {
+    /* Creates the distinct Zillow structural break */
+    border-top: 1px solid #e8e9ea;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .tips-header {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #54545a;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    span {
+      color: #2a2a33;
+      font-size: 24px;
+      /* Optically aligns the top of the icon with the top of the strong tag */
+      margin-top: -2px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #2a2a33;
+    }
+
+    p {
+      color: #54545a;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+  ul {
+    margin: 4px 0 0 0;
+    padding-left: 20px;
+    color: #54545a;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+@keyframes keystone-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

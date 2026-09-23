@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/keystone-properties",
+  "version": "0.1.0",
+  "title": "Keystone Properties",
+  "category": "widgets",
+  "icon": "location-alt",
+  "description": "Keystone Properties Main Block.",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "textdomain": "keystone-properties",
+  "editorScript": "file:./index.js",
+  "editorStyle": ["file:./index.css", "dashicons"],
+  "style": ["file:./style-index.css", "leaflet-style"],
+  "render": "file:./render.php",
+  "viewScriptModule": ["file:./view.js", "leaflet-script"]
+}

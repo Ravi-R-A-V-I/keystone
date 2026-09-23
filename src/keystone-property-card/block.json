@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/keystone-property-card",
+  "version": "0.1.0",
+  "title": "Keystone Property Card",
+  "category": "widgets",
+  "icon": "admin-multisite",
+  "description": "keystone properties card",
+  "example": {},
+  "supports": {
+    "interactivity": true
+  },
+  "textdomain": "keystone-property-card",
+  "editorScript": "file:./index.js",
+  "editorStyle": ["file:./index.css", "dashicons"],
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}

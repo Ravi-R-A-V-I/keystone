@@ -1,0 +1,92 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+#search-suggestions {
+  position: absolute;
+  color: #4b5563;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 2000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#search-suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+#search-suggestions::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2;
+  border-radius: 10px;
+}
+
+.suggestion-item {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+.suggestion-item:hover {
+  background-color: #f3f4f6;
+}
+
+.keystone-search-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 15px;
+  padding: 4px 12px;
+  margin: auto;
+}
+.keystone-search-group.size-small {
+  max-width: 400px;
+}
+.keystone-search-group.size-medium {
+  max-width: 600px;
+}
+.keystone-search-group.size-large {
+  max-width: 850px;
+}
+.keystone-search-group {
+  /* Alignment Modifiers */
+}
+.keystone-search-group.align-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+.keystone-search-group.align-center {
+  margin: 0 auto;
+}
+.keystone-search-group.align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.keystone-search-group input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px;
+  flex-grow: 1;
+  font-size: 14px;
+}
+.keystone-search-group button {
+  display: flex;
+  background: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 8px;
+}
+.keystone-search-group button:hover {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+}/*# sourceMappingURL=style.css.map */

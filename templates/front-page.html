@@ -1,0 +1,263 @@
+<!-- wp:group {"metadata":{"categories":["header"],"patternName":"core/fullwidth-header-with-hero-image","name":"Fullwidth header with hero image"},"align":"full","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull">
+  <!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->
+  <div class="wp-block-group alignfull">
+    <!-- wp:group {"metadata":{"categories":["header","wireframe"],"patternName":"core/fullwidth-site-title-and-menu-button","name":"Fullwidth site title and menu button"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"textColor":"contrast","layout":{"type":"flex","justifyContent":"space-between"}} -->
+    <div
+      class="wp-block-group has-contrast-color has-text-color has-link-color"
+      style="
+        padding-top: var(--wp--preset--spacing--30);
+        padding-right: var(--wp--preset--spacing--30);
+        padding-bottom: var(--wp--preset--spacing--30);
+        padding-left: var(--wp--preset--spacing--30);
+      "
+    >
+      <!-- wp:site-title /-->
+
+      <!-- wp:navigation {"ref":4,"className":"keystone-primary-nav"} /-->
+    </div>
+    <!-- /wp:group -->
+  </div>
+  <!-- /wp:group -->
+
+  <!-- wp:cover {"url":"http://localhost:10023/wp-content/uploads/2026/08/Keystone-Hero-Background-1024x683.jpg","id":19,"alt":"Keystone Hero Background","dimRatio":40,"overlayColor":"black","isUserOverlayColor":true,"minHeight":40,"minHeightUnit":"vw","contentPosition":"center center","sizeSlug":"large","align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
+  <div class="wp-block-cover alignfull" style="margin-top: 0; min-height: 40vw">
+    <img
+      class="wp-block-cover__image-background wp-image-19 size-large"
+      alt="Keystone Hero Background"
+      src="http://localhost:10023/wp-content/uploads/2026/08/Keystone-Hero-Background-1024x683.jpg"
+      data-object-fit="cover"
+    /><span
+      aria-hidden="true"
+      class="wp-block-cover__background has-black-background-color has-background-dim-40 has-background-dim"
+    ></span>
+    <div class="wp-block-cover__inner-container">
+      <!-- wp:heading {"level":1,"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"typography":{"textAlign":"center","fontSize":"63px"}},"textColor":"white"} -->
+      <h1
+        class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color"
+        style="font-size: 63px"
+      >
+        <strong>Your Dream Home Awaits</strong>....
+      </h1>
+      <!-- /wp:heading -->
+
+      <!-- wp:search {"label":"Search","showLabel":false,"width":50,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true,"align":"center","backgroundColor":"zillow-blue"} /-->
+    </div>
+  </div>
+  <!-- /wp:cover -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:spacer {"height":"54px"} -->
+<div style="height: 54px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:create-block/featured-property-cards-container -->
+<!-- wp:query {"queryId":3,"query":{"postType":"property","perPage":8,"excludeCurrent":null,"inherit":false,"offset":0}} -->
+<div class="wp-block-query">
+  <!-- wp:post-template -->
+  <!-- wp:create-block/keystone-property-card /-->
+  <!-- /wp:post-template -->
+</div>
+<!-- /wp:query -->
+
+<!-- wp:group {"className":"view-all-card","layout":{"type":"constrained"}} -->
+<div class="wp-block-group view-all-card">
+  <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+  <p class="has-text-align-center">
+    <a href="#"
+      >View all <br />
+      Properties</a
+    >
+  </p>
+  <!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:create-block/featured-property-cards-container -->
+
+<!-- wp:spacer {"height":"55px"} -->
+<div style="height: 55px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
+  <!-- wp:columns -->
+  <div class="wp-block-columns">
+    <!-- wp:column {"className":"keystone-feature-cards","style":{"shadow":"none"},"layout":{"type":"default"}} -->
+    <div
+      class="wp-block-column keystone-feature-cards"
+      style="box-shadow: none"
+    >
+      <!-- wp:image {"id":28,"width":"156px","height":"auto","sizeSlug":"thumbnail","linkDestination":"none","align":"center"} -->
+      <figure class="wp-block-image aligncenter size-thumbnail is-resized">
+        <img
+          src="http://localhost:10023/wp-content/uploads/2026/08/Buy-Home-150x150.png"
+          alt=""
+          class="wp-image-28"
+          style="width: 156px; height: auto"
+        />
+      </figure>
+      <!-- /wp:image -->
+
+      <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
+      <h3 class="wp-block-heading has-text-align-center">Buy a home</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+      <p class="has-text-align-center">
+        <strong>Find the home that feels like yours.</strong>&nbsp;Browse
+        handpicked listings with transparent pricing.
+      </p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+      <div class="wp-block-buttons">
+        <!-- wp:button {"backgroundColor":"zillow-blue","style":{"border":{"radius":{"topLeft":"15px","topRight":"15px","bottomLeft":"15px","bottomRight":"15px"}}}} -->
+        <div class="wp-block-button">
+          <a
+            class="wp-block-button__link has-zillow-blue-background-color has-background wp-element-button"
+            style="
+              border-top-left-radius: 15px;
+              border-top-right-radius: 15px;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            "
+            >Find agent</a
+          >
+        </div>
+        <!-- /wp:button -->
+      </div>
+      <!-- /wp:buttons -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column {"className":"keystone-feature-cards","style":{"shadow":"none"},"layout":{"type":"default"}} -->
+    <div
+      class="wp-block-column keystone-feature-cards"
+      style="box-shadow: none"
+    >
+      <!-- wp:image {"id":29,"sizeSlug":"thumbnail","linkDestination":"none","align":"center"} -->
+      <figure class="wp-block-image aligncenter size-thumbnail">
+        <img
+          src="http://localhost:10023/wp-content/uploads/2026/08/Rent-Home-150x150.png"
+          alt=""
+          class="wp-image-29"
+        />
+      </figure>
+      <!-- /wp:image -->
+
+      <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
+      <h3 class="wp-block-heading has-text-align-center">Rent a home</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+      <p class="has-text-align-center">
+        <strong>Find a place you'll never want to leave.</strong>&nbsp;Browse
+        verified rentals with clear terms, no broker hassles.
+      </p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+      <div class="wp-block-buttons">
+        <!-- wp:button {"backgroundColor":"zillow-blue","style":{"border":{"radius":{"topLeft":"15px","topRight":"15px","bottomLeft":"15px","bottomRight":"15px"}}}} -->
+        <div class="wp-block-button">
+          <a
+            class="wp-block-button__link has-zillow-blue-background-color has-background wp-element-button"
+            style="
+              border-top-left-radius: 15px;
+              border-top-right-radius: 15px;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            "
+            >Find rentals</a
+          >
+        </div>
+        <!-- /wp:button -->
+      </div>
+      <!-- /wp:buttons -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column {"className":"keystone-feature-cards","style":{"shadow":"none"},"layout":{"type":"default"}} -->
+    <div
+      class="wp-block-column keystone-feature-cards"
+      style="box-shadow: none"
+    >
+      <!-- wp:image {"id":30,"sizeSlug":"thumbnail","linkDestination":"none","align":"center"} -->
+      <figure class="wp-block-image aligncenter size-thumbnail">
+        <img
+          src="http://localhost:10023/wp-content/uploads/2026/08/Sell-Home-150x150.png"
+          alt=""
+          class="wp-image-30"
+        />
+      </figure>
+      <!-- /wp:image -->
+
+      <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
+      <h3 class="wp-block-heading has-text-align-center">Sell a home</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+      <p class="has-text-align-center">
+        <strong>Your home is worth more than you think.</strong>&nbsp;Get a
+        free, no-obligation valuation with transparent pricing,
+      </p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+      <div class="wp-block-buttons">
+        <!-- wp:button {"backgroundColor":"zillow-blue","style":{"border":{"radius":{"topLeft":"15px","topRight":"15px","bottomLeft":"15px","bottomRight":"15px"}}}} -->
+        <div class="wp-block-button">
+          <a
+            class="wp-block-button__link has-zillow-blue-background-color has-background wp-element-button"
+            style="
+              border-top-left-radius: 15px;
+              border-top-right-radius: 15px;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            "
+            >See your options</a
+          >
+        </div>
+        <!-- /wp:button -->
+      </div>
+      <!-- /wp:buttons -->
+    </div>
+    <!-- /wp:column -->
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"categories":["footer","wireframe"],"patternName":"core/centered-footer-with-social-links","name":"Centered footer with social links"},"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|50","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","top":"var:preset|spacing|60"},"blockGap":"var:preset|spacing|40","margin":{"top":"0","bottom":"0"}},"dimensions":{"minHeight":"40vh"}},"textColor":"contrast","layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+<div
+  class="wp-block-group alignfull has-contrast-color has-text-color"
+  style="
+    min-height: 40vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: var(--wp--preset--spacing--60);
+    padding-right: var(--wp--preset--spacing--50);
+    padding-bottom: var(--wp--preset--spacing--60);
+    padding-left: var(--wp--preset--spacing--50);
+  "
+>
+  <!-- wp:site-logo {"align":"center","className":"is-style-default","style":{"spacing":{"margin":{"bottom":"6px"}}}} /-->
+
+  <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"medium"} -->
+  <p class="has-text-align-center has-medium-font-size">
+    Developed by <a href="#">Ravi</a>
+  </p>
+  <!-- /wp:paragraph -->
+
+  <!-- wp:social-links {"size":"has-normal-icon-size","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"top":"12px","left":"12px"}}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+  <ul class="wp-block-social-links has-normal-icon-size is-style-logos-only">
+    <!-- wp:social-link {"url":"#","service":"facebook"} /-->
+
+    <!-- wp:social-link {"url":"#","service":"twitter"} /-->
+
+    <!-- wp:social-link {"url":"#","service":"wordpress"} /-->
+  </ul>
+  <!-- /wp:social-links -->
+</div>
+<!-- /wp:group -->

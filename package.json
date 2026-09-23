@@ -1,0 +1,21 @@
+{
+  "name": "keystone-real-estate-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "wp-scripts start --output-path=build --experimental-modules --blocks-manifest",
+    "build": "wp-scripts build --output-path=build --experimental-modules --blocks-manifest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^34.2.0"
+  },
+  "dependencies": {
+    "@wordpress/interactivity": "^6.54.0",
+    "ajv": "^8.20.0"
+  }
+}

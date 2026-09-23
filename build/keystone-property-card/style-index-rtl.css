@@ -1,0 +1,119 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/keystone-property-card/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.property-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* Target the wrapper div directly above the image & svg in render.php */
+}
+.property-card > div:first-child {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+.property-card .property-image {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.property-card .property-image.is-active {
+  display: block;
+}
+.property-card .gallery-indicators {
+  position: absolute;
+  bottom: 12px;
+  right: 50%;
+  transform: translateX(50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.property-card .gallery-dot {
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.property-card .gallery-dot.is-active {
+  background-color: #ffffff;
+  transform: scale(1.2);
+}
+.property-card .favorite-btn.is-favorited svg {
+  fill: #e74c3c;
+  stroke: #e74c3c; /* Matches the border to the fill */
+  transform: scale(1.2);
+  animation: heartBounce 0.4s ease;
+}
+.property-card > div:last-child {
+  padding: 16px;
+}
+
+.gallery__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+  transition: ease 0.3s;
+}
+
+.gallery__arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery__arrow--prev {
+  right: 10px;
+}
+
+.gallery__arrow--next {
+  left: 10px;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  stroke: #fff;
+  fill: rgba(0, 0, 0, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+@keyframes heartBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

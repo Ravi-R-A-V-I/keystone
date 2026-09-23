@@ -1,0 +1,23 @@
+.view-all-card {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 320px;
+  max-height: 368px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  p,
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+}
