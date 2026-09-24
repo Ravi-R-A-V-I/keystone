@@ -32,10 +32,16 @@ function keystone_enqueue_assets() {
                 'nonce' => wp_create_nonce('wp_rest')
     ));
     wp_enqueue_script_module('@wordpress/interactivity');
+    
+    if(is_singular('property')) {
+        wp_enqueue_script('single-property', get_template_directory_uri() . '/src/single-property/gallery.js', array(), true);
+    }
 }
 
 
 add_action('wp_enqueue_scripts', 'keystone_enqueue_assets');
+
+
 
 add_filter('script_loader_tag', function($tag, $handle, $src) {
     if ('keystone-property-card' === $handle) {
