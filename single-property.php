@@ -60,31 +60,31 @@ $property_description = get_field('property_description', $post_id);
                 <!-- Bedrooms -->
                 <div class="spec-card">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-                    <span><strong><?php echo $property_bedrooms; ?></strong> Beds</span>
+                    <span><strong><?php echo esc_html($property_bedrooms); ?></strong> Beds</span>
                 </div>
 
                 <!-- Bathrooms -->
                 <div class="spec-card">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                    <span><strong><?php echo $property_bathrooms; ?></strong> Baths</span>
+                    <span><strong><?php echo esc_html($property_bathrooms); ?></strong> Baths</span>
                 </div>
 
                 <!-- Square Footage -->
                 <div class="spec-card">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
-                    <span><strong><?php echo $property_sqft; ?></strong> Sqft</span>
+                    <span><strong><?php echo esc_html($property_sqft); ?></strong> Sqft</span>
                 </div>
 
                 <!-- Year Built -->
                 <div class="spec-card">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span>Built in <strong><?php echo $year_built; ?></strong></span>
+                    <span>Built in <strong><?php echo esc_html($year_built); ?></strong></span>
                 </div>
 
                 <!-- Garage Spaces -->
                 <div class="spec-card">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H8.3a2 2 0 0 0-1.6.8L4 11l-5.16.86a1 1 0 0 0-.84.99V16h3m10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                    <span><strong><?php echo $garage_spaces; ?></strong> Garage Spaces</span>
+                    <span><strong><?php echo esc_html($garage_spaces); ?></strong> Garage Spaces</span>
                 </div>
 
             </div>
@@ -117,8 +117,8 @@ $property_description = get_field('property_description', $post_id);
             </div>
         </div>
         <div class="keystone-property-sidebar">
-                <img class="keystone-property-agent-avatar" src="<?php echo $author_avatar_url ?>" alt="">
-                <p><?php echo $author_name ?></p>
+                <img class="keystone-property-agent-avatar" src="<?php echo esc_url($author_avatar_url); ?>" alt="">
+                <p><?php echo esc_html($author_name) ?></p>
                 <button class="keystone-contact-btn">Contact Agent</button>
         </div>
     </div>
