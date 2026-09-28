@@ -247,4 +247,118 @@
   font-size: 18px;
   color: #555;
   margin: 0 0 30px 0;
+}
+
+.keystone-auth-form {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.keystone-auth-form h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+.keystone-auth-form {
+  /* Wrap the paragraph text at the bottom */
+}
+.keystone-auth-form p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.keystone-auth-form p a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+}
+.keystone-auth-form p a:hover {
+  text-decoration: underline;
+}
+
+.keystone-form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.keystone-form-input:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+.keystone-submit-btn {
+  background-color: #006aff; /* Zillow style blue */
+  color: #ffffff;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+.keystone-submit-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.keystone-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between box and text */
+  margin-top: 5px;
+}
+.keystone-checkbox-wrapper label {
+  font-size: 15px;
+  cursor: pointer;
+}
+.keystone-checkbox-wrapper .keystone-form-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.keystone-auth-message:empty {
+  display: none;
+}
+.keystone-auth-message {
+  max-width: 400px;
+  margin: 0 auto 24px auto;
+  padding: 14px 20px;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-left: 5px solid #ef4444;
+  color: #991b1b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  animation: authMessageFadeIn 0.3s ease-out forwards;
+}
+.keystone-auth-message strong {
+  color: #7f1d1d;
+  font-weight: 700;
+}
+
+@keyframes authMessageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=style.css.map */

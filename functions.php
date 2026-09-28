@@ -36,10 +36,42 @@ function keystone_enqueue_assets() {
     if(is_singular('property')) {
         wp_enqueue_script('single-property', get_template_directory_uri() . '/src/single-property/gallery.js', array(), true);
     }
+    if(is_page('login') || is_page('register')) {
+        wp_enqueue_script('login-register', get_template_directory_uri() . '/src/authentication/auth.js', array(), false, true);
+        wp_localize_script('login-register', 'keystone_auth', array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('keystone_auth_nonce')
+
+    ));
+    }
+    
 }
 
 
 add_action('wp_enqueue_scripts', 'keystone_enqueue_assets');
+
+function keystone_handle_login() {
+    check_ajax_referer('keystone_auth_nonce', 'security');
+    $username = sanitize_text_field($_POST['username']);
+    $password = $_POST['password'];
+    $user = wp_authenticate($username, $password);
+    
+    if(is_wp_error($user)) {
+        wp_send_json_error(array(
+            'message' => $user->get_error_message(),
+        ));
+    } else {
+        wp_set_current_user($user->ID);
+        wp_set_auth_cookie($user->ID);
+        wp_send_json_success( array(
+        'message' => 'You are now logged in',
+    ));
+    }  
+}
+
+add_action('wp_ajax_nopriv_keystone_login_user', 'keystone_handle_login');
+add_action('wp_ajax_keystone_login_user', 'keystone_handle_login');
+
 
 
 

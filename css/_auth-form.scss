@@ -1,0 +1,133 @@
+.keystone-auth-form {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+  }
+
+  /* Wrap the paragraph text at the bottom */
+  p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+
+    a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.keystone-form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #0056b3;
+    outline: none;
+  }
+}
+
+.keystone-submit-btn {
+  background-color: #006aff; /* Zillow style blue */
+  color: #ffffff;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+}
+
+.keystone-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between box and text */
+  margin-top: 5px;
+
+  label {
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .keystone-form-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0;
+  }
+}
+
+.keystone-auth-message {
+  &:empty {
+    display: none;
+  }
+  // Layout and Spacing
+  max-width: 400px;
+  margin: 0 auto 24px auto;
+  padding: 14px 20px;
+
+  // Premium Error Colors
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-left: 5px solid #ef4444; // Bold left accent line
+  color: #991b1b;
+
+  // Typography
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  // Shape and Shadow (The "Pop")
+  border-radius: 6px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+  // Premium Slide-in Animation
+  animation: authMessageFadeIn 0.3s ease-out forwards;
+
+  // Target the WordPress <strong> tags directly
+  strong {
+    color: #7f1d1d;
+    font-weight: 700;
+  }
+}
+
+// The animation keyframes
+@keyframes authMessageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
