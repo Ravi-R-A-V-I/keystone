@@ -36,7 +36,7 @@ function keystone_enqueue_assets() {
     if(is_singular('property')) {
         wp_enqueue_script('single-property', get_template_directory_uri() . '/src/single-property/gallery.js', array(), true);
     }
-    if(is_page('login') || is_page('register')) {
+    if(is_page('login') || is_page('register') || is_page('set-new-password')) {
         wp_enqueue_script('login-register', get_template_directory_uri() . '/src/authentication/auth.js', array(), false, true);
         wp_localize_script('login-register', 'keystone_auth', array(
                 'ajax_url' => admin_url('admin-ajax.php'),
@@ -73,6 +73,105 @@ add_action('wp_ajax_nopriv_keystone_login_user', 'keystone_handle_login');
 add_action('wp_ajax_keystone_login_user', 'keystone_handle_login');
 
 
+
+function keystone_handle_register() {
+    check_ajax_referer('keystone_auth_nonce', 'security');
+    if(username_exists(sanitize_text_field($_POST['username'])) || email_exists(sanitize_email($_POST['email']))) {
+        wp_send_json_error(array(
+            'message' => 'Username or email already exists',
+        ));
+    }
+
+    if($_POST['password'] !== $_POST['confirm-password']) {
+        wp_send_json_error(array(
+            'message' => 'Passwords do not match',
+        ));
+    }
+
+    if(!empty($_POST['agent'])) {
+        $user_role = 'editor';
+    } else {
+        $user_role = 'subscriber';
+    }
+    $user_id = wp_insert_user(array(
+        'user_login' => sanitize_text_field($_POST['username']),
+        'user_email' => sanitize_email($_POST['email']),
+        'user_pass' => $_POST['password'],
+        'role' => $user_role
+    ));
+
+    if(is_wp_error($user_id)) {
+        wp_send_json_error(array(
+            'message' => $user_id->get_error_message(),
+        ));
+    } else {
+        wp_set_current_user($user_id);
+        wp_set_auth_cookie($user_id);
+        wp_send_json_success( array(
+        'message' => 'Your account has been created',
+    ));
+    }
+
+}
+
+add_action('wp_ajax_nopriv_keystone_register_user', 'keystone_handle_register');
+add_action('wp_ajax_keystone_register_user', 'keystone_handle_register');
+
+add_filter('logout_redirect', function() {
+    return home_url();
+});
+
+function keystone_handle_reset_password() {
+    check_ajax_referer('keystone_auth_nonce', 'security');
+    $email = sanitize_email($_POST['email']);
+    $user = get_user_by('email', $email);
+    if(!empty($user)) {
+        retrieve_password($email);
+    }
+
+    wp_send_json_success(array(
+        'message' => 'If an account exists for this email, a reset link has been sent.',
+    ));  
+}
+
+add_action('wp_ajax_nopriv_keystone_reset_password', 'keystone_handle_reset_password');
+
+function keystone_custom_reset_email_link( $message, $key, $user_login, $user_data ) {
+    // Build a custom URL pointing to a new frontend page
+    $custom_url = home_url( "/set-new-password/?key=$key&login=" . rawurlencode( $user_login ) );
+
+    // Rebuild the email body with your custom URL
+    $message = "Someone has requested a password reset for the following account:\r\n\r\n";
+    $message .= "Site Name: " . get_bloginfo( 'name' ) . "\r\n\r\n";
+    $message .= "Username: " . $user_login . "\r\n\r\n";
+    $message .= "If this was a mistake, just ignore this email and nothing will happen.\r\n\r\n";
+    $message .= "To reset your password, visit the following address:\r\n\r\n";
+    $message .= $custom_url . "\r\n";
+
+    return $message;
+}
+add_filter( 'retrieve_password_message', 'keystone_custom_reset_email_link', 10, 4 );
+
+
+function keystone_handle_set_new_password() {
+    check_ajax_referer('keystone_auth_nonce', 'security');
+    $user_login = sanitize_text_field($_POST['login']);
+    $password = $_POST['password'];
+    $key = sanitize_text_field($_POST['key']);
+    $user = check_password_reset_key( $key, $user_login );
+    if(is_wp_error($user)) {
+        wp_send_json_error(array(
+            'message' => 'Invalid or expired reset link.',
+        ));
+    } else {
+        reset_password( $user, $password );
+        wp_send_json_success(array(
+            'message' => 'Your password has been reset.',
+        ));
+    }
+}
+
+add_action('wp_ajax_nopriv_keystone_set_new_password', 'keystone_handle_set_new_password');
 
 
 add_filter('script_loader_tag', function($tag, $handle, $src) {

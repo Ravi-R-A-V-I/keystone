@@ -361,4 +361,47 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+#keystone-reset-fields {
+  display: none;
+}
+
+#back-to-login {
+  display: none;
+}
+
+#keystone-login-fields,
+#keystone-reset-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+#keystone-reset-fields {
+  display: none;
+}
+
+.keystone-secondary-link {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0056b3;
+}
+.keystone-secondary-link:hover {
+  text-decoration: underline;
+}
+
+.keystone-auth-success {
+  background-color: #f0fdf4;
+  border-left-color: #22c55e;
+  color: #15803d;
+}
+
+#keystone-new-password-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* This will separate the inputs and the button */
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

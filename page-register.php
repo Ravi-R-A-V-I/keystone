@@ -1,7 +1,12 @@
-<?php get_header(); 
+<?php get_header();
+if(is_user_logged_in()) {
+  wp_redirect(home_url());
+  exit;
+}
  /* Template Name: Register */
 ?>
 
+<div id="register-message" class="keystone-auth-message"></div>
 <form id="register-form" class="keystone-auth-form">
     <h1>Register</h1>
     <input type="text" class="keystone-form-input" placeholder="Email" name="email" id="register-email">
