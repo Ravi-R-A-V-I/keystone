@@ -46,10 +46,69 @@ function keystone_enqueue_assets() {
     ));
     }
     
+    if(is_page('agent-profile')) {
+        wp_enqueue_script('agent-profile-js', get_template_directory_uri() . '/src/agent-profile/agent-profile.js', array(), 1.0, true);
+        wp_localize_script('agent-profile-js', 'agent_profile_data', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('agent_profile_nonce')
+        ));
+    }
+    
 }
 
 
 add_action('wp_enqueue_scripts', 'keystone_enqueue_assets');
+
+
+function handle_agent_profile_update() {
+    if(!wp_verify_nonce($_POST['security'], 'agent_profile_nonce')) {
+        wp_send_json_error(array(
+            'message' => 'Invalid nonce'
+        ));
+    } else {
+        $user_id = get_current_user_id();
+        $first_name = sanitize_text_field($_POST['first_name']);
+        $last_name = sanitize_text_field($_POST['last_name']);
+        $phone = sanitize_text_field($_POST['phone']);
+        $email = sanitize_email($_POST['public_email']);
+        $license = sanitize_text_field($_POST['license']);
+        $linkedIn = sanitize_url($_POST['linkedIn']);
+        $instagram = sanitize_url($_POST['instagram']);
+        $website = sanitize_url($_POST['website']);
+        $bio = sanitize_textarea_field($_POST['bio']);
+
+        wp_update_user(array(
+            'ID' => $user_id,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'description' => $bio
+        ));
+
+        update_user_meta($user_id, 'public_email', $email);
+        update_user_meta($user_id, 'phone', $phone);
+        update_user_meta($user_id, 'license', $license);
+        update_user_meta($user_id, 'linkedIn', $linkedIn);
+        update_user_meta($user_id, 'instagram', $instagram);
+        update_user_meta($user_id, 'website', $website);
+
+        if($_FILES['avatar']['name']) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            $upload_overrides = array(
+                'test_form' => false
+            );
+            $movefile = wp_handle_upload($_FILES['avatar'], $upload_overrides);
+            if($movefile && !isset($movefile['error'])) {
+                update_user_meta($user_id, 'avatar_url', $movefile['url']);
+            }
+        }
+        wp_send_json_success(array(
+            'message' => 'Your profile has been updated'
+        ));
+    }
+    
+}
+
+add_action('wp_ajax_keystone_update_agent_profile', 'handle_agent_profile_update');
 
 function keystone_handle_login() {
     check_ajax_referer('keystone_auth_nonce', 'security');
