@@ -94,7 +94,7 @@ if (setPasswordBtn) {
         loginMessage.innerHTML = data.data.message;
         loginMessage.classList.add("keystone-auth-success");
 
-        // Optional: Redirect them back to the login page after 3 seconds
+        // Redirect them back to the login page after 3 seconds
         setTimeout(() => {
           window.location.href = window.location.origin + "/login/";
         }, 3000);

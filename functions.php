@@ -24,6 +24,7 @@ add_action('after_setup_theme', 'keystone_register_features');
 
 function keystone_enqueue_assets() {
     wp_enqueue_style('keystone-style', get_template_directory_uri() . '/css/style.css');
+    wp_enqueue_style('dashicons');
     wp_enqueue_style('leaflet-style', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4');
     wp_enqueue_script('leaflet-script', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true);
     wp_enqueue_script('keystone-property-card', get_template_directory_uri() . '/build/keystone-property-card/view.js', array(), true);
@@ -73,6 +74,41 @@ add_action('wp_ajax_nopriv_keystone_login_user', 'keystone_handle_login');
 add_action('wp_ajax_keystone_login_user', 'keystone_handle_login');
 
 
+function keystone_register_custom_roles() {
+    if(! get_role('real_estate_agent')) {
+        add_role(
+            'real_estate_agent',
+            'Agent',
+            array(
+                'read' => true,
+                'upload_files' => true,
+            )
+        );
+    }
+}
+
+
+add_action('init', 'keystone_register_custom_roles');
+
+
+function keystone_block_wp_admin() {
+    if(is_admin() && !current_user_can('administrator') && !(defined('DOING_AJAX') && DOING_AJAX)) {
+        wp_safe_redirect(home_url());
+        exit;
+    }
+}
+
+add_action('admin_init', 'keystone_block_wp_admin');
+
+
+function keystone_hide_admin_bar() {
+    if(!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
+
+add_action('after_setup_theme', 'keystone_hide_admin_bar');
+
 
 function keystone_handle_register() {
     check_ajax_referer('keystone_auth_nonce', 'security');
@@ -89,7 +125,7 @@ function keystone_handle_register() {
     }
 
     if(!empty($_POST['agent'])) {
-        $user_role = 'editor';
+        $user_role = 'real_estate_agent';
     } else {
         $user_role = 'subscriber';
     }
