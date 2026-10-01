@@ -46,11 +46,11 @@ function keystone_enqueue_assets() {
     ));
     }
     
-    if(is_page('agent-profile')) {
-        wp_enqueue_script('agent-profile-js', get_template_directory_uri() . '/src/agent-profile/agent-profile.js', array(), 1.0, true);
-        wp_localize_script('agent-profile-js', 'agent_profile_data', array(
+    if(is_page('agent-dashboard')) {
+        wp_enqueue_script('agent-dashboard-js', get_template_directory_uri() . '/src/agent-dashboard/agent-dashboard.js', array(), 1.0, true);
+        wp_localize_script('agent-dashboard-js', 'agent_dashboard_data', array(
             'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('agent_profile_nonce')
+            'nonce' => wp_create_nonce('agent_dashboard_nonce')
         ));
     }
     
@@ -61,7 +61,7 @@ add_action('wp_enqueue_scripts', 'keystone_enqueue_assets');
 
 
 function handle_agent_profile_update() {
-    if(!wp_verify_nonce($_POST['security'], 'agent_profile_nonce')) {
+    if(!wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
         wp_send_json_error(array(
             'message' => 'Invalid nonce'
         ));

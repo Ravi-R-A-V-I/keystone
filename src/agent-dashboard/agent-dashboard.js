@@ -16,10 +16,10 @@ if (agentProfileForm) {
 
     const formData = new FormData(agentProfileForm);
     formData.append("action", "keystone_update_agent_profile");
-    formData.append("security", agent_profile_data.nonce);
+    formData.append("security", agent_dashboard_data.nonce);
 
     try {
-      const response = await fetch(agent_profile_data.ajax_url, {
+      const response = await fetch(agent_dashboard_data.ajax_url, {
         method: "POST",
         body: formData,
       });
