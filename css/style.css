@@ -549,6 +549,8 @@
   margin: 40px auto;
   padding: 0 20px;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #2d3748;
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 2rem;
@@ -626,4 +628,319 @@
 
 .dashboard-main-content {
   padding: 40px;
+}
+
+/* --- Global Button Styles --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.btn-outline {
+  border-color: #007bff;
+  color: #007bff;
+  background: transparent;
+}
+.btn-outline:hover {
+  background: #f0f7ff;
+}
+.btn-danger-outline {
+  border-color: #e53e3e;
+  color: #e53e3e;
+  background: transparent;
+}
+.btn-danger-outline:hover {
+  background: #fff5f5;
+}
+.btn-large {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+}
+
+/* --- Shared Dashboard Header --- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between; /* Pushes title to left, button to right */
+  align-items: center;
+  margin-bottom: 30px; /* This adds the exact space you need above the cards */
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1a202c;
+}
+
+/* --- Properties Grid Tab --- */
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.property-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.property-card .property-card-image {
+  position: relative;
+  height: 200px;
+}
+.property-card .property-card-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.property-card .property-card-image .status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #48bb78;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.property-card .property-card-content {
+  padding: 20px;
+  flex-grow: 1;
+}
+.property-card .property-card-content .property-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+.property-card .property-card-content .property-price {
+  color: #007bff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 0 12px;
+}
+.property-card .property-card-content .property-meta {
+  color: #718096;
+  font-size: 0.9rem;
+}
+.property-card .property-card-content .property-meta span {
+  margin-right: 5px;
+}
+.property-card .property-card-actions {
+  padding: 15px 20px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 10px;
+}
+.property-card .property-card-actions .btn {
+  flex: 1;
+  text-align: center;
+}
+
+.dashboard-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 8px;
+}
+.dashboard-pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #718096;
+  transition: all 0.2s ease;
+}
+.dashboard-pagination .page-numbers.current, .dashboard-pagination .page-numbers:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* --- Add/Edit Property Form Tab --- */
+.dashboard-form .form-section {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.dashboard-form .form-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #2d3748;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 10px;
+}
+.dashboard-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.dashboard-form .form-group {
+  margin-bottom: 16px;
+}
+.dashboard-form .form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+.dashboard-form .form-group input[type=text],
+.dashboard-form .form-group input[type=number],
+.dashboard-form .form-group textarea,
+.dashboard-form .form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-family: inherit;
+}
+.dashboard-form .form-group input[type=text]:focus,
+.dashboard-form .form-group input[type=number]:focus,
+.dashboard-form .form-group textarea:focus,
+.dashboard-form .form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+.dashboard-form .form-group input[type=file] {
+  width: 100%;
+  padding: 8px;
+  background: #f7fafc;
+  border: 1px dashed #cbd5e0;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #4a5568;
+  font-family: inherit;
+  /* Targets the native OS "Choose File" button */
+}
+.dashboard-form .form-group input[type=file]::file-selector-button {
+  padding: 8px 16px;
+  margin-right: 12px;
+  background-color: #e2e8f0;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  color: #2d3748;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.dashboard-form .form-group input[type=file]::file-selector-button:hover {
+  background-color: #cbd5e0;
+}
+.dashboard-form {
+  /* Amenities Categories & Checkbox Grid */
+  /* Amenities Dropdown Accordions */
+}
+.dashboard-form .amenities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.dashboard-form .amenities-container .amenity-category {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 16px 20px;
+  transition: background-color 0.2s ease;
+}
+.dashboard-form .amenities-container .amenity-category[open] {
+  background: #fff;
+  border-color: #cbd5e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.dashboard-form .amenities-container .amenity-category summary {
+  font-size: 0.95rem;
+  color: #1a202c;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  outline: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-form .amenities-container .amenity-category summary::-webkit-details-marker {
+  display: none;
+}
+.dashboard-form .amenities-container .amenity-category summary::after {
+  content: "+";
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #718096;
+  transition: transform 0.2s ease;
+}
+.dashboard-form .amenities-container .amenity-category[open] summary::after {
+  content: "-";
+}
+.dashboard-form .amenities-container .amenity-category .checkbox-grid {
+  /* Change from grid to flex-wrap so items flow organically */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.dashboard-form .amenities-container .amenity-category .checkbox-grid .checkbox-group {
+  /* This makes each card size itself according to its text, instead of filling a grid track */
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  flex: 0 0 auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.dashboard-form .amenities-container .amenity-category .checkbox-grid .checkbox-group:hover {
+  border-color: #cbd5e0;
+  background: #f8fafc;
+}
+.dashboard-form .amenities-container .amenity-category .checkbox-grid .checkbox-group input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #007bff;
+  margin: 0;
+}
+.dashboard-form .amenities-container .amenity-category .checkbox-grid .checkbox-group label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 0.88rem;
+  color: #4a5568;
+  /* Let the text dictate its own width without forcing 100% */
+  width: auto;
+  white-space: nowrap; /* Keeps single-line text unbroken */
 }/*# sourceMappingURL=style.css.map */
