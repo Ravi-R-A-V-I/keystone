@@ -1,9 +1,15 @@
+<?php 
+ if(isset($_GET['status']) && ($_GET['status'] === "success")) { ?>
+     <div class="success-banner">Property successfully submitted!</div>
+ <?php }
+?>
+
 <div class="dashboard-header">
     <h2>Add New Property</h2>
 </div>
 
-<form action="" method="POST" id="property-submission-form" class="dashboard-form" enctype="multipart/form-data">
-    
+<form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="property-submission-form" class="dashboard-form" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="save_agent_property">
     <!-- Section 1: Basic Information -->
     <div class="form-section">
         <h3>Basic Information</h3>

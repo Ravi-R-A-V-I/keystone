@@ -689,6 +689,32 @@
   color: #1a202c;
 }
 
+/* --- Shared Success Message --- */
+.success-banner {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px 20px;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* --- Properties Grid Tab --- */
 .properties-grid {
   display: grid;

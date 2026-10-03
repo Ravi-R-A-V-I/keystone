@@ -110,6 +110,78 @@ function handle_agent_profile_update() {
 
 add_action('wp_ajax_keystone_update_agent_profile', 'handle_agent_profile_update');
 
+function save_agent_property() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce');
+
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+
+    $post_id = wp_insert_post(array(
+      'post_title' => sanitize_text_field($_POST['post_title']),
+      'post_content' => sanitize_textarea_field($_POST['post_content']),
+      'post_type' => 'property',
+      'post_author' => get_current_user_id(),
+      'post_status' => 'publish',
+    ));
+
+    if(!empty($_FILES['property_image_1']['name'])) {
+      $attachment_id = media_handle_upload('property_image_1', $post_id);
+      update_field('property_image_1', $attachment_id, $post_id);
+    }
+    if(!empty($_FILES['property_image_2']['name'])) {
+      $attachment_id = media_handle_upload('property_image_2', $post_id);
+      update_field('property_image_2', $attachment_id, $post_id);
+    }
+    if(!empty($_FILES['property_image_3']['name'])) {
+      $attachment_id = media_handle_upload('property_image_3', $post_id);
+      update_field('property_image_3', $attachment_id, $post_id);
+    }
+    if(!empty($_FILES['property_image_4']['name'])) {
+      $attachment_id = media_handle_upload('property_image_4', $post_id);
+      update_field('property_image_4', $attachment_id, $post_id);
+    }
+    update_field('property_description', sanitize_textarea_field($_POST['property_description']), $post_id);
+    update_field('property_status', sanitize_text_field($_POST['property_status']), $post_id);
+    update_field('property_price', sanitize_text_field($_POST['property_price']), $post_id);
+    update_field('property_sqft', sanitize_text_field($_POST['property_sqft']), $post_id);
+    update_field('property_bedrooms', sanitize_text_field($_POST['property_bedrooms']), $post_id);
+    update_field('property_bathrooms', sanitize_text_field($_POST['property_bathrooms']), $post_id);
+    update_field('year_built', sanitize_text_field($_POST['year_built']), $post_id);
+    update_field('garage_spaces', sanitize_text_field($_POST['garage_spaces']), $post_id);
+    update_field('property_address', sanitize_text_field($_POST['property_address']), $post_id);
+    update_field('latitude', sanitize_text_field($_POST['latitude']), $post_id);
+    update_field('longitude', sanitize_text_field($_POST['longitude']), $post_id);
+    if(isset($_POST['interior_architecture_finishings'])) {
+        $sanitize_array = array_map('sanitize_text_field', $_POST['interior_architecture_finishings']);
+        update_field('interior_architecture_finishings', $sanitize_array, $post_id);
+    }
+    if(isset($_POST['kitchen_bath'])) {
+        $sanitize_array = array_map('sanitize_text_field', $_POST['kitchen_bath']);
+        update_field('kitchen_bath', $sanitize_array, $post_id);
+    }
+    if(isset($_POST['bedrooms_storage'])) {
+        $sanitize_array = array_map('sanitize_text_field', $_POST['bedrooms_storage']);
+        update_field('bedrooms_storage', $sanitize_array, $post_id);
+    }
+    if(isset($_POST['exterior_outdoor_living'])) {
+        $sanitize_array = array_map('sanitize_text_field', $_POST['exterior_outdoor_living']);
+        update_field('exterior_outdoor_living', $sanitize_array, $post_id);
+    }
+    if(isset($_POST['garage_parking_location'])) {
+        $sanitize_array = array_map('sanitize_text_field', $_POST['garage_parking_location']);
+        update_field('garage_parking_location', $sanitize_array, $post_id);
+    }
+
+    $redirect_url = add_query_arg('status', 'success', wp_get_referer());
+    wp_safe_redirect($redirect_url);
+    exit;
+  }
+}
+
+add_action('admin_post_save_agent_property', 'save_agent_property');
+
 function keystone_handle_login() {
     check_ajax_referer('keystone_auth_nonce', 'security');
     $username = sanitize_text_field($_POST['username']);
