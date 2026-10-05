@@ -1,3 +1,27 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Grab any banner that exists on the page
+  const alerts = document.querySelectorAll(".success-banner, .danger-banner");
+
+  if (alerts.length > 0) {
+    // 2. Set a 3-second timer
+    setTimeout(() => {
+      alerts.forEach((alert) => {
+        // Smoothly fade it out
+        alert.style.transition = "opacity 0.5s ease";
+        alert.style.opacity = "0";
+
+        // Remove it from the HTML completely after the fade
+        setTimeout(() => alert.remove(), 500);
+      });
+
+      // 3. The Magic Trick: Silently scrub the '?status=' from the URL
+      const cleanUrl = new URL(window.location);
+      cleanUrl.searchParams.delete("status");
+      window.history.replaceState({}, document.title, cleanUrl);
+    }, 3000); // 3000 milliseconds = 3 seconds
+  }
+});
+
 const agentProfileForm = document.getElementById("agent-profile-form");
 
 if (agentProfileForm) {

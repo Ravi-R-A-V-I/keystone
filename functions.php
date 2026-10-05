@@ -112,19 +112,27 @@ add_action('wp_ajax_keystone_update_agent_profile', 'handle_agent_profile_update
 
 function save_agent_property() {
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce');
+    if(!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
+        wp_die('Security check failed');
+    }
 
     require_once(ABSPATH . 'wp-admin/includes/image.php');
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/media.php');
 
-    $post_id = wp_insert_post(array(
-      'post_title' => sanitize_text_field($_POST['post_title']),
-      'post_content' => sanitize_textarea_field($_POST['post_content']),
-      'post_type' => 'property',
-      'post_author' => get_current_user_id(),
-      'post_status' => 'publish',
-    ));
+    $post_args = array(
+        'post_title' => sanitize_text_field($_POST['post_title']),
+        'post_content' => sanitize_textarea_field($_POST['post_content']),
+        'post_author' => get_current_user_id(),
+        'post_type' => 'property',
+        'post_status' => 'publish'
+    );
+
+    if(!empty($_POST['property_id'])) {
+      $post_args['ID'] = intval($_POST['property_id']);
+    }
+
+    $post_id = wp_insert_post($post_args);
 
     if(!empty($_FILES['property_image_1']['name'])) {
       $attachment_id = media_handle_upload('property_image_1', $post_id);
@@ -181,6 +189,23 @@ function save_agent_property() {
 }
 
 add_action('admin_post_save_agent_property', 'save_agent_property');
+
+
+function delete_agent_property() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if(!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
+            wp_die('Security check failed');  
+        }
+        $property_id = intval($_POST['property_id']);
+        wp_trash_post($property_id);
+
+        $redirect_url = add_query_arg('status', 'deleted', wp_get_referer());
+        wp_safe_redirect($redirect_url);
+        exit;
+    }
+}
+
+add_action('admin_post_delete_agent_property', 'delete_agent_property');
 
 function keystone_handle_login() {
     check_ajax_referer('keystone_auth_nonce', 'security');

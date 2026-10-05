@@ -18,6 +18,7 @@ $properties = new WP_Query($args); ?>
 <div class="properties-grid">
 <?php while($properties->have_posts()): $properties->the_post();
     $title = get_the_title();
+    $property_id = get_the_ID();
     $image = get_field('property_image_1');
     $price = get_field('property_price');
     $status = get_field('property_status');
@@ -39,8 +40,13 @@ $properties = new WP_Query($args); ?>
             </div>
         </div>
         <div class="property-card-actions">
-            <a href="?tab=edit-property&<?php echo get_the_ID(); ?>" class="btn btn-outline">Edit</a>
-            <button class="btn btn-danger-outline">Delete</button>
+            <a href="?tab=edit-property&property_id=<?php echo esc_attr($property_id); ?>" class="btn btn-outline">Edit</a>
+            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+                <?php wp_nonce_field('agent_dashboard_nonce', 'security'); ?>
+                <input type="hidden" name="action" value="delete_agent_property">
+                <input type="hidden" name="property_id" value="<?php echo esc_attr($property_id); ?>">
+                <button type="submit" class="btn btn-danger-outline">Delete</button>
+            </form>
         </div>
     </div>
     <!-- END PLACEHOLDER -->

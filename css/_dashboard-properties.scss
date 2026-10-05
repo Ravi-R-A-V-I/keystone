@@ -70,8 +70,14 @@
     gap: 10px;
 
     .btn {
+      width: 100%;
       flex: 1;
       text-align: center;
+    }
+    form {
+      display: contents;
+      width: 100%;
+      flex: 1;
     }
   }
 }

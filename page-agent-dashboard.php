@@ -57,7 +57,11 @@ $current_user = wp_get_current_user();
 
     <!-- 3. Dynamic Content Canvas -->
     <main class="dashboard-main-content">
-        <?php
+        <?php if(isset($_GET['status']) && ($_GET['status'] === "success")) { ?>
+        <div class="success-banner">Property successfully submitted!</div>
+        <?php } else if (isset($_GET['status']) && ($_GET['status'] === "deleted")) { ?>
+        <div class="danger-banner">Property successfully deleted!</div>
+    <?php }
         if ($current_tab === 'properties') {
             get_template_part('template-parts/dashboard', 'properties');
         } elseif ($current_tab === 'add-property' || $current_tab === 'edit-property') {

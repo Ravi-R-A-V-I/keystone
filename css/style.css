@@ -705,6 +705,21 @@
   animation: slideDown 0.4s ease-out forwards;
 }
 
+.danger-banner {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 15px 20px;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideDown 0.4s ease-out forwards;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -782,8 +797,14 @@
   gap: 10px;
 }
 .property-card .property-card-actions .btn {
+  width: 100%;
   flex: 1;
   text-align: center;
+}
+.property-card .property-card-actions form {
+  display: contents;
+  width: 100%;
+  flex: 1;
 }
 
 .dashboard-pagination {
