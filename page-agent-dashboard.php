@@ -73,7 +73,4 @@ $current_user = wp_get_current_user();
     </main>
 
 </div>
-
-<?php 
-get_footer(); 
-?>
+<?php get_footer(); ?>

@@ -6,6 +6,7 @@ function keystone_register_blocks() {
     register_block_type( __DIR__ . '/build/featured-property-cards-container');
     register_block_type( __DIR__ . '/build/keystone-properties');
     register_block_type( __DIR__ . '/build/keystone-search');
+    register_block_type( __DIR__ . '/build/keystone-header');
 }
 
 add_action('init', 'keystone_register_blocks');

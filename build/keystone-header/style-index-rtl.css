@@ -1,0 +1,260 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/keystone-header/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+header {
+  display: flex;
+  max-width: 1050px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* A: Remove default underline & set natural typography */
+}
+header a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+header a:hover {
+  color: #0066fe;
+}
+header {
+  /* B: Left Container (Logo Wrapper) */
+}
+header > div:first-child {
+  display: flex;
+  align-items: center;
+}
+header > div:first-child a {
+  display: inline-block;
+}
+header > div:first-child img {
+  max-height: 80px;
+  width: auto;
+  display: block;
+}
+header {
+  /* C: Right Container (Navigation, Dropdown & Mobile Toggle Group) */
+}
+header > div:last-child {
+  display: flex;
+  align-items: center;
+  /* Desktop Layout for the new wrapper */
+}
+header > div:last-child .mobile-collapse {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  /* Added .menu fallback class to catch unassigned menus */
+}
+header > div:last-child .mobile-collapse .menu-main-menu-container,
+header > div:last-child .mobile-collapse .menu,
+header > div:last-child .mobile-collapse nav,
+header > div:last-child .mobile-collapse ul {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+header > div:last-child .mobile-collapse .menu-main-menu-container li,
+header > div:last-child .mobile-collapse .menu li,
+header > div:last-child .mobile-collapse nav li,
+header > div:last-child .mobile-collapse ul li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+header > div:last-child .mobile-collapse .menu-main-menu-container li a,
+header > div:last-child .mobile-collapse .menu li a,
+header > div:last-child .mobile-collapse nav li a,
+header > div:last-child .mobile-collapse ul li a {
+  display: block;
+  padding: 4px 0;
+}
+header > div:last-child .mobile-collapse {
+  /* Targets ONLY the dedicated sign-in button */
+}
+header > div:last-child .mobile-collapse a.btn-sign-in {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0066fe !important;
+  color: #ffffff !important;
+  padding: 10px 24px !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: background-color 0.2s ease;
+}
+header > div:last-child .mobile-collapse a.btn-sign-in:hover {
+  background-color: #0052cc !important;
+}
+
+/* Hamburger Icon Base (Hidden on Desktop) */
+header .mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 2000;
+}
+header .mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #1a1a1a;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* D: Dropdown Specifics */
+.profile-dropdown-wrapper {
+  position: relative;
+}
+.profile-dropdown-wrapper .dropdown-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  outline: none;
+}
+.profile-dropdown-wrapper .dropdown-toggle img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.profile-dropdown-wrapper .dropdown-toggle img:hover {
+  border-color: #0066fe;
+}
+.profile-dropdown-wrapper ul.dropdown-menu {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  display: none !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 8px 0 !important;
+  border: 1px solid #eaeaea;
+}
+.profile-dropdown-wrapper ul.dropdown-menu li {
+  display: block !important;
+  width: 100%;
+}
+.profile-dropdown-wrapper ul.dropdown-menu li a {
+  display: block !important;
+  padding: 10px 20px !important;
+  color: #333333 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  transition: background 0.2s !important;
+  text-align: right;
+}
+.profile-dropdown-wrapper ul.dropdown-menu li a:hover {
+  background: #f5f9ff !important;
+  color: #0066fe !important;
+}
+.profile-dropdown-wrapper.is-active ul.dropdown-menu {
+  display: flex !important;
+}
+
+/* Mobile Breakpoint - App Menu Style */
+@media (max-width: 850px) {
+  header {
+    /* Ensure the header container allows for right-aligned dropdowns */
+    padding: 1rem 2rem;
+  }
+  header > div:last-child .mobile-menu-toggle {
+    display: flex;
+  }
+  header > div:last-child .mobile-collapse {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 5px); /* Floats just below the header */
+    left: 2rem; /* Anchors to the right side */
+    right: auto;
+    width: 220px; /* App-like compact width */
+    background: #ffffff;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Left-aligns the text */
+    padding: 16px 20px;
+    border-radius: 12px; /* Smooth app-like corners */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Floating card shadow */
+    border: 1px solid #f0f0f0;
+    z-index: 999;
+    gap: 16px;
+    /* Stack the WP menu items neatly */
+  }
+  header > div:last-child .mobile-collapse .menu-main-menu-container,
+  header > div:last-child .mobile-collapse .menu,
+  header > div:last-child .mobile-collapse nav,
+  header > div:last-child .mobile-collapse ul {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+    gap: 12px !important;
+  }
+  header > div:last-child .mobile-collapse .menu-main-menu-container li a,
+  header > div:last-child .mobile-collapse .menu li a,
+  header > div:last-child .mobile-collapse nav li a,
+  header > div:last-child .mobile-collapse ul li a {
+    font-size: 15px;
+    padding: 4px 0;
+    width: 100%;
+  }
+  header > div:last-child .mobile-collapse {
+    /* App-style Profile Wrapper tweaks */
+  }
+  header > div:last-child .mobile-collapse .profile-dropdown-wrapper {
+    width: 100%;
+    border-top: 1px solid #f0f0f0; /* Clean separator line */
+    padding-top: 16px;
+  }
+  header > div:last-child .mobile-collapse .profile-dropdown-wrapper .dropdown-toggle img {
+    width: 32px; /* Smaller app-style avatar */
+    height: 32px;
+  }
+  header > div:last-child .mobile-collapse .profile-dropdown-wrapper {
+    /* Adjust the nested profile menu to push content down instead of floating away */
+  }
+  header > div:last-child .mobile-collapse .profile-dropdown-wrapper ul.dropdown-menu {
+    position: relative;
+    top: 10px;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    padding: 0 !important;
+  }
+  header > div:last-child .mobile-collapse.is-mobile-open {
+    display: flex !important;
+  }
+}
