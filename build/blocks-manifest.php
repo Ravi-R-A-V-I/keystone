@@ -26,6 +26,38 @@ return array(
 		'render' => 'file:./render.php',
 		'viewScriptModule' => 'file:./view.js'
 	),
+	'keystone-footer' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/keystone-footer',
+		'version' => '0.1.0',
+		'title' => 'Keystone Footer Block',
+		'category' => 'widgets',
+		'icon' => 'palmtree',
+		'description' => 'Keystone Footer Block.',
+		'attributes' => array(
+			'logoUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'logoId' => array(
+				'type' => 'number',
+				'default' => 0
+			)
+		),
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'interactivity' => true
+		),
+		'textdomain' => 'keystone-footer-block',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScriptModule' => 'file:./view.js'
+	),
 	'keystone-header' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

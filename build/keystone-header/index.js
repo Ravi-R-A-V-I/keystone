@@ -87,13 +87,7 @@ function Edit({
         })
       })
     }), !logoUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      style: {
-        position: "absolute",
-        left: "32px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        zIndex: 50
-      },
+      className: "keystone-logo",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
         onSelect: onSelectLogo,
         type: "image",
@@ -105,9 +99,14 @@ function Edit({
           children: "Upload Logo"
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__.ServerSideRender, {
-      block: "create-block/keystone-header",
-      attributes: attributes
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      style: {
+        pointerEvents: "none"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__.ServerSideRender, {
+        block: "create-block/keystone-header",
+        attributes: attributes
+      })
     })]
   });
 }

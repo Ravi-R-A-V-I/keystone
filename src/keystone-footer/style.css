@@ -1,0 +1,77 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.keystone-footer {
+  padding: 4rem 2rem;
+  max-width: 1050px;
+  margin: auto;
+  background-color: #f9f9f9; /* Soft background to separate it from page content */
+  border-top: 1px solid #eaeaea;
+}
+.keystone-footer .footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.keystone-footer .keystone-footer-logo img {
+  max-height: 60px;
+  width: auto;
+  display: block;
+}
+.keystone-footer .footer-column {
+  /* Strip default WP list styles and stack vertically */
+}
+.keystone-footer .footer-column .menu,
+.keystone-footer .footer-column div > ul,
+.keystone-footer .footer-column ul {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.keystone-footer .footer-column .menu li,
+.keystone-footer .footer-column div > ul li,
+.keystone-footer .footer-column ul li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+.keystone-footer .footer-column .menu li a,
+.keystone-footer .footer-column div > ul li a,
+.keystone-footer .footer-column ul li a {
+  text-decoration: none;
+  color: #555555;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+.keystone-footer .footer-column .menu li a:hover,
+.keystone-footer .footer-column div > ul li a:hover,
+.keystone-footer .footer-column ul li a:hover {
+  color: #0066fe; /* Keystone Blue */
+}
+
+.keystone-logo {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 850px) {
+  .keystone-footer {
+    padding: 3rem 1.5rem;
+  }
+  .keystone-footer .footer-nav-grid {
+    grid-template-columns: 1fr; /* Stack everything in 1 column on mobile */
+    gap: 30px;
+  }
+}/*# sourceMappingURL=style.css.map */

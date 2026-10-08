@@ -57,15 +57,7 @@ export default function Edit({ attributes, setAttributes }) {
 
       {/* NEW: The Canvas Placeholder (ONLY visible when logo is missing) */}
       {!logoUrl && (
-        <div
-          style={{
-            position: "absolute",
-            left: "32px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 50,
-          }}
-        >
+        <div className="keystone-logo">
           <MediaUpload
             onSelect={onSelectLogo}
             type="image"
@@ -77,12 +69,13 @@ export default function Edit({ attributes, setAttributes }) {
           />
         </div>
       )}
-
-      {/* The Live PHP Preview */}
-      <ServerSideRender
-        block="create-block/keystone-header"
-        attributes={attributes}
-      />
+      <div style={{ pointerEvents: "none" }}>
+        {/* The Live PHP Preview */}
+        <ServerSideRender
+          block="create-block/keystone-header"
+          attributes={attributes}
+        />
+      </div>
     </div>
   );
 }

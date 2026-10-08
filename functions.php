@@ -7,6 +7,7 @@ function keystone_register_blocks() {
     register_block_type( __DIR__ . '/build/keystone-properties');
     register_block_type( __DIR__ . '/build/keystone-search');
     register_block_type( __DIR__ . '/build/keystone-header');
+    register_block_type( __DIR__ . '/build/keystone-footer');
 }
 
 add_action('init', 'keystone_register_blocks');
@@ -16,7 +17,8 @@ function keystone_register_features() {
     register_nav_menus(array(
         'main-menu' => 'Main Menu',
         'footer-menu' => 'Footer Menu One',
-        'footer-menu-two' => 'Footer Menu Two'
+        'footer-menu-two' => 'Footer Menu Two',
+        'footer-menu-three' => 'Footer Menu Three'
     ));
 }
 

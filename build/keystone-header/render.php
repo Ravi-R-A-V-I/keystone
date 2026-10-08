@@ -63,7 +63,7 @@ $unique_id = wp_unique_id( 'p-' );
 		</ul>
 	   </div>
 	<?php } else {
-		echo '<a href="">Sign In</a>';
+		echo '<a class="btn-login" href="' . esc_url(home_url('/login')) . '">Login</a>';
 	 }
 	?>
   </div>

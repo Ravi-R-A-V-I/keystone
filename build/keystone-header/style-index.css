@@ -16,7 +16,6 @@ header {
   padding: 0.6rem 2rem;
   background: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   /* A: Remove default underline & set natural typography */
 }
 header a {
@@ -185,6 +184,30 @@ header .mobile-menu-toggle span {
 }
 .profile-dropdown-wrapper.is-active ul.dropdown-menu {
   display: flex !important;
+}
+
+.keystone-logo {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+.btn-login {
+  background: #0066fe;
+  border-radius: 15px;
+  color: #fff;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+.btn-login:hover {
+  color: #fff !important;
+}
+.btn-login:active {
+  transform: scale(0.95);
 }
 
 /* Mobile Breakpoint - App Menu Style */
