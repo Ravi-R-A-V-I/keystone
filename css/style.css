@@ -990,4 +990,188 @@
   /* Let the text dictate its own width without forcing 100% */
   width: auto;
   white-space: nowrap; /* Keeps single-line text unbroken */
+}
+
+.agents-page {
+  max-width: 1440px;
+  margin: auto;
+}
+.agents-page .agent-search-form {
+  margin: 24px 40px;
+  background-color: #ffffff;
+  border: 1px solid #e8e9ea;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.agents-page .agent-search-form input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 340px;
+}
+.agents-page .agent-search-form button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.agents-page .agent-search-form button:active {
+  transform: scale(0.95);
+}
+.agents-page .agent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 24px 40px;
+}
+.agents-page .agent-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e9ea;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; /* Overrides the default serif font */
+}
+.agents-page .agent-card .agent-card-image {
+  flex-shrink: 0;
+}
+.agents-page .agent-card .agent-card-image img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.agents-page .agent-card .agent-card-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+.agents-page .agent-card .agent-card-details h3 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2a2a33;
+}
+.agents-page .agent-card .agent-card-details > p {
+  /* Targets the bio paragraph specifically */
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  color: #54565b;
+  line-height: 1.4;
+}
+.agents-page .agent-card .agent-card-details .agent-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  /* Forces the email and phone side-by-side */
+}
+.agents-page .agent-card .agent-card-details .agent-contact-info .contact-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* Keeps them from breaking if the screen gets too small */
+}
+.agents-page .agent-card .agent-card-details .agent-contact-info p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #54565b;
+  display: flex;
+  align-items: center; /* Perfectly centers the icon with the text */
+  gap: 6px;
+  padding: 4px 0;
+}
+.agents-page .agent-card .agent-card-details .agent-contact-info p .dashicons {
+  color: #006aff; /* Applies the Zillow blue to the contact icons */
+  font-size: 16px; /* Scales the icons to match the paragraph text */
+  width: 16px;
+  height: 16px;
+}
+.agents-page .agent-card .agent-card-details .agent-contact-info a {
+  text-decoration: none;
+  color: inherit;
+}
+.agents-page .agent-card .agent-card-details .agent-social-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+.agents-page .agent-card .agent-card-details .agent-social-links a {
+  text-decoration: none;
+  color: #006aff;
+  font-size: 20px;
+  transition: opacity 0.2s;
+}
+.agents-page .agent-card .agent-card-details .agent-social-links a:hover {
+  opacity: 0.7;
+}
+
+.agent-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  gap: 8px;
+}
+.agent-pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #718096;
+  transition: all 0.2s ease;
+}
+.agent-pagination .page-numbers.current, .agent-pagination .page-numbers:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .agents-page .agent-search-form {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .agents-page .agent-search-form input {
+    width: 100%;
+  }
+  .agents-page .agent-search-form button {
+    width: 100%;
+  }
+  .agents-page {
+    /* 1. Stack the cards into a single column */
+  }
+  .agents-page .agent-grid {
+    grid-template-columns: 1fr;
+    margin: 24px 16px; /* Shrinks the outside margins to fit phone screens */
+  }
+  .agents-page {
+    /* 2. Stack the image on top of the text inside the card */
+  }
+  .agents-page .agent-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .agents-page .agent-card .agent-card-details {
+    align-items: center; /* Centers the text block under the image */
+  }
+  .agents-page .agent-card .contact-row {
+    justify-content: center; /* Centers the email and phone */
+  }
+  .agents-page .agent-card .agent-social-links {
+    justify-content: center; /* Centers the social icons */
+  }
 }/*# sourceMappingURL=style.css.map */

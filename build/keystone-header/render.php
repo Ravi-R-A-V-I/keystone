@@ -48,7 +48,7 @@ $unique_id = wp_unique_id( 'p-' );
 		echo'</button>' ?>
 		<ul class="dropdown-menu">
 			<?php
-			if($current_user->roles[0] == 'agent')
+			if($current_user->roles[0] == 'real_estate_agent')
 			{
 				echo '<li><a href="' . esc_url(home_url('/agent-dashboard')) . '">Dashboard</a></li>';
 			}
