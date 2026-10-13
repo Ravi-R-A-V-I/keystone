@@ -49,12 +49,15 @@ function keystone_enqueue_assets() {
     ));
     }
     
-    if(is_page('agent-dashboard')) {
+    if(is_page('agent-dashboard') || is_page('profile-settings')) {
         wp_enqueue_script('agent-dashboard-js', get_template_directory_uri() . '/src/agent-dashboard/agent-dashboard.js', array(), 1.0, true);
         wp_localize_script('agent-dashboard-js', 'agent_dashboard_data', array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('agent_dashboard_nonce')
         ));
+    }
+    if(is_author()) {
+        wp_enqueue_script('author-js', get_template_directory_uri() . '/src/author/author.js', array(), 1.0, true);
     }
     
 }
@@ -70,6 +73,24 @@ function handle_agent_profile_update() {
         ));
     } else {
         $user_id = get_current_user_id();
+
+
+        if(!empty($_POST['new_password'])) {
+            if($_POST['new_password'] !== $_POST['confirm_new_password']) {
+                wp_send_json_error(array(
+                    'message' => 'New passwords do not match'
+                ));
+            }
+            $user = get_userdata($user_id);
+            if(!wp_check_password($_POST['current_password'], $user->user_pass, $user_id)) {
+                wp_send_json_error(array(
+                    'message' => 'Current password is incorrect'
+                ));
+            }
+            wp_set_password($_POST['new_password'], $user_id);
+            wp_set_auth_cookie($user_id);
+        }
+
         $first_name = sanitize_text_field($_POST['first_name']);
         $last_name = sanitize_text_field($_POST['last_name']);
         $phone = sanitize_text_field($_POST['phone']);
@@ -241,6 +262,8 @@ function keystone_register_custom_roles() {
             array(
                 'read' => true,
                 'upload_files' => true,
+                'edit_posts' => true,
+                'publish_posts' => true
             )
         );
     }

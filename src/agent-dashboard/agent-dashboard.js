@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("Agent Dashboard and profile settings loaded");
   // 1. Grab any banner that exists on the page
   const alerts = document.querySelectorAll(".success-banner, .danger-banner");
 
@@ -21,6 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000); // 3000 milliseconds = 3 seconds
   }
 });
+
+const agentAvatar = document.getElementById("agent-avatar");
+const avatarPreview = document.querySelector("#preview-image");
+const uploadText = document.getElementById("upload-text");
+
+if (agentAvatar) {
+  agentAvatar.addEventListener("change", function () {
+    const fileName = this.files[0];
+    if (fileName) {
+      avatarPreview.src = URL.createObjectURL(fileName);
+      uploadText.style.display = "none";
+      avatarPreview.style.display = "block";
+    } else {
+      avatarPreview.style.display = "none";
+      avatarPreview.src = "";
+      uploadText.style.display = "block";
+    }
+  });
+}
 
 const agentProfileForm = document.getElementById("agent-profile-form");
 
@@ -72,8 +92,10 @@ if (agentProfileForm) {
       } else {
         console.log(data.data.message);
         if (submitBtn) {
-          submitBtn.innerHTML = "Failed to Save";
+          submitBtn.classList.add("is-error");
+          submitBtn.innerHTML = data.data.message;
           setTimeout(() => {
+            submitBtn.classList.remove("is-error");
             submitBtn.innerHTML = originalText;
           }, 3000);
         }

@@ -22,10 +22,10 @@
         <div class="form-section avatar-upload">
             <!-- The entire circle is now the clickable button -->
             <label for="agent-avatar" class="avatar-preview">
-                <?php if($avatar_url) {
-                echo '<img src="' . esc_url($avatar_url) . '" alt="Agent Avatar">';
-             } ?>
-                <span class="placeholder-text">Upload Photo</span>
+                <?php
+                echo '<img src="' . esc_url($avatar_url) . '" alt="Agent Avatar" id="preview-image">';
+                ?>
+                <span class="placeholder-text" id="upload-text">Upload Photo</span>
             </label>
             <input type="file" id="agent-avatar" name="avatar" accept="image/jpeg, image/png, image/webp">
         </div>
@@ -50,6 +50,13 @@
         </div>
         <div class="form-section professional-info">
             <textarea name="bio" class="dashboard-input" placeholder="Bio"><?php echo esc_textarea($bio ?? ''); ?></textarea>
+        </div>
+        <div class="form-section password-section">
+            <input type="password" name="current_password" class="dashboard-input" placeholder="Current Password">
+            <div class="new-password-fields">
+                <input type="password" name="new_password" class="dashboard-input" placeholder="New Password">
+                <input type="password" name="confirm_new_password" class="dashboard-input" placeholder="Confirm Password">
+            </div>
         </div>
         <button type="submit" name="submit_agent_profile" class="dashboard-submit-btn">Submit</button>
     </div>

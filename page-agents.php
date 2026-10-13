@@ -72,7 +72,10 @@ $user_query = new WP_User_Query($args);
         <!-- RIGHT SIDE: All Text and Links -->
         <div class="agent-card-details">
             
-            <h3>
+            <a href="<?php
+             echo esc_url(get_author_posts_url($agent->ID));
+            ?>">
+             <h3>
                 <?php 
                 if($first_name && $last_name) {
                     echo esc_html($first_name . ' ' . $last_name);
@@ -80,7 +83,8 @@ $user_query = new WP_User_Query($args);
                     echo esc_html($agent->display_name);
                 } 
                 ?>
-            </h3>
+             </h3>
+            </a>
             
             <p><?php if($bio) echo esc_html(wp_trim_words($bio, 20)); ?></p>
 

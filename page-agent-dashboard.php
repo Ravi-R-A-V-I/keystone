@@ -6,6 +6,14 @@ if (!is_user_logged_in()) {
     exit;
 }
 
+$active_user = wp_get_current_user();
+
+if(in_array('subscriber', $active_user->roles, true)) {
+    $redirect_url = home_url('/profile-settings');
+    wp_redirect($redirect_url);
+    exit;
+}
+
 get_header();
 
 // 1. Determine the active tab safely

@@ -486,6 +486,9 @@
 .agent-dashboard-form .dashboard-submit-btn.is-success {
   background-color: #16a34a !important;
 }
+.agent-dashboard-form .dashboard-submit-btn.is-error {
+  background-color: #ef4444 !important;
+}
 .agent-dashboard-form .avatar-upload {
   display: flex;
   justify-content: center;
@@ -542,6 +545,19 @@
   margin-bottom: 6px;
   margin-top: 18px;
   letter-spacing: 0.01em;
+}
+.agent-dashboard-form .password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.agent-dashboard-form .password-section .new-password-fields {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .agent-dashboard-wrapper {
@@ -1173,5 +1189,264 @@
   }
   .agents-page .agent-card .agent-social-links {
     justify-content: center; /* Centers the social icons */
+  }
+}
+.profile-master-wrap {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: sans-serif; /* Fallback to match your theme */
+}
+.profile-master-wrap .profile-business-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+  border: 1px solid #f0f0f0;
+}
+.profile-master-wrap .profile-business-card .card-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile-master-wrap .profile-business-card .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.profile-master-wrap .profile-business-card .contact-info h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #2a2a33;
+  text-underline-offset: 4px; /*[cite: 23] */
+  text-decoration-thickness: 2px;
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info a {
+  text-decoration: none;
+  color: #444; /*[cite: 23] */
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info .dashicons {
+  color: #0066fe;
+  margin-right: 8px; /*[cite: 23] */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info .contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem; /*[cite: 23] */
+  align-items: center;
+  /* Forces the license <p> tag onto its own line[cite: 21, 23] */
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info .contact-row > p {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info .social-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 0.5rem; /*[cite: 23] */
+}
+.profile-master-wrap .profile-business-card .contact-info .agent-contact-info .social-row .dashicons {
+  margin: 0;
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+.profile-master-wrap .profile-about-section {
+  margin-bottom: 3.5rem;
+}
+.profile-master-wrap .profile-about-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.profile-master-wrap .profile-about-section p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Forces the text to cut off after 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  /* This class will be added by JavaScript when the user clicks */
+}
+.profile-master-wrap .profile-about-section p.is-expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+.profile-master-wrap .profile-about-section .read-more-toggle {
+  background: none;
+  border: none;
+  color: #0066fe;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.profile-master-wrap .profile-about-section .read-more-toggle:hover {
+  text-decoration: underline;
+}
+.profile-master-wrap .profile-listings-sale,
+.profile-master-wrap .profile-listings-rent {
+  margin-bottom: 3.5rem;
+}
+.profile-master-wrap .profile-listings-sale .listings-header,
+.profile-master-wrap .profile-listings-rent .listings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.profile-master-wrap .profile-listings-sale .listings-header h2,
+.profile-master-wrap .profile-listings-rent .listings-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.profile-master-wrap .profile-listings-sale .listings-header .slider-controls,
+.profile-master-wrap .profile-listings-rent .listings-header .slider-controls {
+  display: flex;
+  gap: 12px;
+}
+.profile-master-wrap .profile-listings-sale .listings-header .slider-controls .nav-arrow,
+.profile-master-wrap .profile-listings-rent .listings-header .slider-controls .nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d1d1d5;
+  color: #2a2a33; /* Zillow-style dark grey */
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.profile-master-wrap .profile-listings-sale .listings-header .slider-controls .nav-arrow:hover,
+.profile-master-wrap .profile-listings-rent .listings-header .slider-controls .nav-arrow:hover {
+  border-color: #869099;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.profile-master-wrap .profile-listings-sale .listings-header .slider-controls .nav-arrow.is-disabled,
+.profile-master-wrap .profile-listings-rent .listings-header .slider-controls .nav-arrow.is-disabled {
+  opacity: 0.3;
+  pointer-events: none; /* Physically prevents the user from clicking */
+  cursor: default;
+}
+.profile-master-wrap .profile-listings-sale .listings-track,
+.profile-master-wrap .profile-listings-rent .listings-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  /* Hide scrollbar for a clean, app-like slider */
+}
+.profile-master-wrap .profile-listings-sale .listings-track::-webkit-scrollbar,
+.profile-master-wrap .profile-listings-rent .listings-track::-webkit-scrollbar {
+  display: none;
+}
+.profile-master-wrap .profile-listings-sale .listings-track,
+.profile-master-wrap .profile-listings-rent .listings-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card,
+.profile-master-wrap .profile-listings-rent .simple-property-card {
+  flex: 0 0 320px; /* Forces a strict fixed width and refuses to squish */
+  border: 1px solid #d1d1d5;
+  border-radius: 8px;
+  overflow: hidden; /* Critically clips the square image corners to the rounded border */
+  background: #ffffff;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .feature-image a,
+.profile-master-wrap .profile-listings-rent .simple-property-card .feature-image a {
+  display: block;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .feature-image img,
+.profile-master-wrap .profile-listings-rent .simple-property-card .feature-image img {
+  width: 100%;
+  height: 220px;
+  -o-object-fit: cover;
+     object-fit: cover; /* Prevents vertical or small photos from stretching */
+  display: block;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details {
+  padding: 18px 16px; /* Slightly more top/bottom padding for the wrapper */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* This single rule controls the space between ALL text lines perfectly */
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-title,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-title {
+  margin: 0; /* Margins removed so the flex gap does all the work */
+  font-size: 1rem;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-title a,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-title a {
+  text-decoration: none;
+  color: #0066fe;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-title a:hover,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-title a:hover {
+  text-decoration: underline;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-price,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-price {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2a2a33;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-address,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-address {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-meta,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #2a2a33;
+}
+.profile-master-wrap .profile-listings-sale .simple-property-card .property-details .property-meta span,
+.profile-master-wrap .profile-listings-rent .simple-property-card .property-details .property-meta span {
+  font-weight: 600;
+}
+.profile-master-wrap {
+  /* Basic Mobile Responsive */
+}
+@media (max-width: 768px) {
+  .profile-master-wrap .profile-business-card {
+    flex-direction: column;
+    text-align: center;
   }
 }/*# sourceMappingURL=style.css.map */

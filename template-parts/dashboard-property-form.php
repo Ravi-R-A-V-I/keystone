@@ -13,6 +13,9 @@
   $property_address = '';
   $latitude = '';
   $longitude = '';
+  $property_sqft = '';
+  $year_built = '';
+  $garage_spaces = '';
   $interior_architecture_finishings = [];
   $kitchen_bath = [];
   $bedrooms_storage = [];
@@ -33,6 +36,9 @@
     $property_image_3 = get_post_meta($property_id, 'property_image_3', true);
     $property_image_4 = get_post_meta($property_id, 'property_image_4', true);
     $property_address = get_post_meta($property_id, 'property_address', true);
+    $property_sqft = get_post_meta($property_id, 'property_sqft', true);
+    $year_built = get_post_meta($property_id, 'year_built', true);
+    $garage_spaces = get_post_meta($property_id, 'garage_spaces', true);
     $latitude = get_post_meta($property_id, 'latitude', true);
     $longitude = get_post_meta($property_id, 'longitude', true);
     $interior_architecture_finishings = get_post_meta($property_id, 'interior_architecture_finishings', true);
