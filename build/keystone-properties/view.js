@@ -271,6 +271,9 @@ let observer = new IntersectionObserver(async entries => {
     isLoading = false;
     loader.classList.remove("is-fetching");
   }
+}, {
+  root: document.querySelector(".keystone-results-container"),
+  rootMargin: "100px"
 });
 observer.observe(loader);
 const searchInput = document.querySelector("#filter-search");

@@ -21,6 +21,70 @@
   line-height: 1.4;
 }
 
+.keystone-query-loop {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  /* Post Template / Grid Layout */
+}
+.keystone-query-loop .wp-block-post-template {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+}
+@media (max-width: 1024px) {
+  .keystone-query-loop .wp-block-post-template {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 650px) {
+  .keystone-query-loop .wp-block-post-template {
+    grid-template-columns: 1fr;
+  }
+}
+.keystone-query-loop {
+  /* Pagination Styling */
+}
+.keystone-query-loop .wp-block-query-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.keystone-query-loop .wp-block-query-pagination a,
+.keystone-query-loop .wp-block-query-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333333;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.keystone-query-loop .wp-block-query-pagination a:hover,
+.keystone-query-loop .wp-block-query-pagination span:hover {
+  border-color: #0066fe;
+  color: #0066fe;
+}
+.keystone-query-loop .wp-block-query-pagination .current,
+.keystone-query-loop .wp-block-query-pagination span.current {
+  background-color: #0066fe;
+  color: #ffffff;
+  border-color: #0066fe;
+}
+
 .keystone-primary-nav,
 .keystone-primary-nav li {
   margin-right: 12px; /* Adjust this value to whatever looks best */

@@ -82,6 +82,7 @@ if(in_array($current_post_id, $favorites)) {
 		 
 	</div>
 	<div>
+	  <a href="<?php echo esc_url( get_permalink( $card_post_id ) ); ?>" class="property-card-link">
 		<h2>$<?php echo $property_price ?></h2>
 		<p>
 			<span><?php echo $property_bedrooms ?> bds</span> | 
@@ -90,5 +91,7 @@ if(in_array($current_post_id, $favorites)) {
 			<span><?php echo $property_status ?></span>
 		</p>
 		<p><?php echo $property_address ?></p>
+	  </a>
 	</div>
+	
 </div>

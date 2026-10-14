@@ -178,75 +178,81 @@ let northEdge = null;
 let southEdge = null;
 let eastEdge = null;
 let westEdge = null;
-let observer = new IntersectionObserver(async (entries) => {
-  if (!entries[0].isIntersecting || isLoading) return;
+let observer = new IntersectionObserver(
+  async (entries) => {
+    if (!entries[0].isIntersecting || isLoading) return;
 
-  isLoading = true;
-  loader.classList.add("is-fetching");
+    isLoading = true;
+    loader.classList.add("is-fetching");
 
-  let apiUrl = new URL(
-    window.location.origin + "/wp-json/keystone/v1/properties",
-  );
+    let apiUrl = new URL(
+      window.location.origin + "/wp-json/keystone/v1/properties",
+    );
 
-  if (fetchStatus) apiUrl.searchParams.append("status", fetchStatus);
-  apiUrl.searchParams.append("page", currentPage);
-  if (northEdge) apiUrl.searchParams.append("north_lat", northEdge);
-  if (southEdge) apiUrl.searchParams.append("south_lat", southEdge);
-  if (eastEdge) apiUrl.searchParams.append("east_lng", eastEdge);
-  if (westEdge) apiUrl.searchParams.append("west_lng", westEdge);
-  if (priceInput.value) {
-    apiUrl.searchParams.append("min_price", priceInput.value);
-    apiUrl.searchParams.append("max_price", priceInput2.value);
-  }
-
-  if (bedsInput.value) apiUrl.searchParams.append("beds", bedsInput.value);
-  if (bathsInput.value) apiUrl.searchParams.append("baths", bathsInput.value);
-
-  try {
-    let response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-WP-Nonce": keystone_property_card.nonce,
-      },
-      credentials: "same-origin",
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    if (fetchStatus) apiUrl.searchParams.append("status", fetchStatus);
+    apiUrl.searchParams.append("page", currentPage);
+    if (northEdge) apiUrl.searchParams.append("north_lat", northEdge);
+    if (southEdge) apiUrl.searchParams.append("south_lat", southEdge);
+    if (eastEdge) apiUrl.searchParams.append("east_lng", eastEdge);
+    if (westEdge) apiUrl.searchParams.append("west_lng", westEdge);
+    if (priceInput.value) {
+      apiUrl.searchParams.append("min_price", priceInput.value);
+      apiUrl.searchParams.append("max_price", priceInput2.value);
     }
 
-    let data = await response.json();
+    if (bedsInput.value) apiUrl.searchParams.append("beds", bedsInput.value);
+    if (bathsInput.value) apiUrl.searchParams.append("baths", bathsInput.value);
 
-    if (data.html_output.trim() === "") {
-      observer.unobserve(loader);
-      return;
+    try {
+      let response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-WP-Nonce": keystone_property_card.nonce,
+        },
+        credentials: "same-origin",
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      let data = await response.json();
+
+      if (data.html_output.trim() === "") {
+        observer.unobserve(loader);
+        return;
+      }
+
+      const tempSandbox = document.createElement("div");
+      tempSandbox.innerHTML = data.html_output;
+
+      const newCards = tempSandbox.querySelectorAll(".property-card");
+      newCards.forEach((card) => {
+        loader.insertAdjacentElement("beforebegin", card);
+      });
+
+      const keystoneNewCards = new CustomEvent("keystone-new-cards", {
+        detail: data.html_output,
+        bubbles: true,
+        composed: true,
+      });
+      document.dispatchEvent(keystoneNewCards);
+
+      currentPage++;
+    } catch (error) {
+      console.error("Failed to load more properties:", error);
+    } finally {
+      // ALWAYS runs, success or failure, preventing the infinite spinner bug
+      isLoading = false;
+      loader.classList.remove("is-fetching");
     }
-
-    const tempSandbox = document.createElement("div");
-    tempSandbox.innerHTML = data.html_output;
-
-    const newCards = tempSandbox.querySelectorAll(".property-card");
-    newCards.forEach((card) => {
-      loader.insertAdjacentElement("beforebegin", card);
-    });
-
-    const keystoneNewCards = new CustomEvent("keystone-new-cards", {
-      detail: data.html_output,
-      bubbles: true,
-      composed: true,
-    });
-    document.dispatchEvent(keystoneNewCards);
-
-    currentPage++;
-  } catch (error) {
-    console.error("Failed to load more properties:", error);
-  } finally {
-    // ALWAYS runs, success or failure, preventing the infinite spinner bug
-    isLoading = false;
-    loader.classList.remove("is-fetching");
-  }
-});
+  },
+  {
+    root: document.querySelector(".keystone-results-container"),
+    rootMargin: "100px",
+  },
+);
 
 observer.observe(loader);
 

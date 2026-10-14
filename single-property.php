@@ -31,6 +31,9 @@ $garage_parking_location = get_field('garage_parking_location', $post_id);
 $year_built = get_field('year_built', $post_id);
 $garage_spaces = get_field('garage_spaces', $post_id);
 $property_description = get_field('property_description', $post_id);
+$avatar_url = get_user_meta($author_id, 'avatar_url', true);
+$first_name = get_user_meta($author_id, 'first_name', true);
+$last_name = get_user_meta($author_id, 'last_name', true);
 ?>
 
 <div class="keystone-single-property">
@@ -117,9 +120,15 @@ $property_description = get_field('property_description', $post_id);
             </div>
         </div>
         <div class="keystone-property-sidebar">
-                <img class="keystone-property-agent-avatar" src="<?php echo esc_url($author_avatar_url); ?>" alt="">
-                <p><?php echo esc_html($author_name) ?></p>
-                <button class="keystone-contact-btn">Contact Agent</button>
+                <img class="keystone-property-agent-avatar" src="<?php 
+                if($avatar_url) {
+                    echo esc_url($avatar_url);
+                } else {
+                    echo esc_url($author_avatar_url);
+                }
+                ?>" alt="">
+                <p><?php echo esc_html($first_name . ' ' . $last_name) ?></p>
+                <a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>"><button class="keystone-contact-btn">Contact Agent</button></a>
         </div>
     </div>
 </div>

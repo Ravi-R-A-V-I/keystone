@@ -6,18 +6,33 @@
  */
 
 .keystone-footer {
-  padding: 4rem 2rem;
-  max-width: 1050px;
-  margin: auto;
-  background-color: #f9f9f9; /* Soft background to separate it from page content */
-  border-top: 1px solid #eaeaea;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 4rem;
+  background-color: #f9f9f9;
+  padding: 4rem 0 2rem;
+  border-top: 1px style #eaeaea;
+
+  // Keep inner content nicely centered at 1050px
+  .footer-inner,
+  .footer-divider,
+  .footer-bottom {
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
   .footer-nav-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    max-width: 1280px;
-    margin: 0 auto;
+    width: 100%;
   }
 
   .keystone-footer-logo {
@@ -58,6 +73,32 @@
       }
     }
   }
+
+  .footer-divider {
+    border: none;
+    border-top: 1px solid #e2e2e2;
+    max-width: 1050px;
+    margin: 3rem auto 1.5rem;
+  }
+
+  .footer-bottom {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+
+    a {
+      color: #0066fe;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .keystone-logo {
@@ -71,7 +112,12 @@
 /* Mobile Breakpoint */
 @media (max-width: 850px) {
   .keystone-footer {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0 1.5rem;
+
+    .footer-inner,
+    .footer-bottom {
+      padding: 0 1.5rem;
+    }
 
     .footer-nav-grid {
       grid-template-columns: 1fr; /* Stack everything in 1 column on mobile */

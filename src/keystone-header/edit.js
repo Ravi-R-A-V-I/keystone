@@ -57,7 +57,7 @@ export default function Edit({ attributes, setAttributes }) {
 
       {/* NEW: The Canvas Placeholder (ONLY visible when logo is missing) */}
       {!logoUrl && (
-        <div className="keystone-logo">
+        <div className="keystone-logo" style={{ zIndex: 9999 }}>
           <MediaUpload
             onSelect={onSelectLogo}
             type="image"

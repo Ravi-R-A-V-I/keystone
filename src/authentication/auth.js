@@ -17,6 +17,23 @@ if (passwordReset) {
   });
 }
 
+// Catch the WordPress core error message link for lost passwords
+document.addEventListener("click", (e) => {
+  if (
+    e.target &&
+    e.target.href &&
+    e.target.href.includes("action=lostpassword")
+  ) {
+    e.preventDefault();
+    if (loginField && resetField) {
+      loginField.style.display = "none";
+      resetField.style.display = "flex";
+      if (passwordReset) passwordReset.style.display = "none";
+      if (backToLogin) backToLogin.style.display = "block";
+    }
+  }
+});
+
 if (backToLogin) {
   backToLogin.addEventListener("click", (e) => {
     e.preventDefault();

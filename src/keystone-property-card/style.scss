@@ -69,6 +69,16 @@
   > div:last-child {
     padding: 16px;
   }
+
+  .property-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+
+    &:hover {
+      color: inherit;
+    }
+  }
 }
 
 .gallery__arrow {
