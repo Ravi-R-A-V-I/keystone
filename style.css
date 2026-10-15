@@ -1,4 +1,9 @@
 /*
 Theme Name: Keystone Real Estate Theme
+Author: Ravi Koshti
+Author URI: https://github.com/Ravi-R-A-V-I
+Version: 1.0.0
+Description: A custom hybrid WordPress real estate theme built with custom Gutenberg blocks, modular SCSS, and dynamic PHP templates. Features a Zillow-style interactive map that dynamically renders and filters property listings based on map bounds, an agent directory with custom pagination, user dashboards for managing listings, saved favorites, and custom AJAX authentication flows.
+Tags: real-estate, custom-blocks, full-site-editing, custom-theme
 Requires at least: 6.5
 */
