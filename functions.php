@@ -139,6 +139,9 @@ function save_agent_property() {
     if(!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
         wp_die('Security check failed');
     }
+    if (!current_user_can('publish_posts')) {
+    wp_die('Unauthorized user.');
+    }
 
     require_once(ABSPATH . 'wp-admin/includes/image.php');
     require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -212,24 +215,36 @@ function save_agent_property() {
   }
 }
 
-add_action('admin_post_save_agent_property', 'save_agent_property');
-
+add_action('wp_ajax_save_agent_property', 'save_agent_property');
 
 function delete_agent_property() {
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if(!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
-            wp_die('Security check failed');  
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Verify nonce
+        if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'agent_dashboard_nonce')) {
+            wp_die('Security check failed');
         }
-        $property_id = intval($_POST['property_id']);
-        wp_trash_post($property_id);
 
-        $redirect_url = add_query_arg('status', 'deleted', wp_get_referer());
-        wp_safe_redirect($redirect_url);
-        exit;
+        // Verify capability
+        if (!current_user_can('delete_posts')) {
+            wp_die('Unauthorized user.');
+        }
+
+        $property_id = intval($_POST['property_id']);
+        $post = get_post($property_id);
+
+        // Security Check: Ensure the post exists and belongs to the current user 
+        // (unless they are an administrator)
+        if ($post && ($post->post_author == get_current_user_id() || current_user_can('administrator'))) {
+            wp_trash_post($property_id);
+            $redirect_url = add_query_arg('status', 'deleted', wp_get_referer());
+            wp_safe_redirect($redirect_url);
+            exit;
+        } else {
+            wp_die('You do not have permission to delete this property.');
+        }
     }
 }
-
-add_action('admin_post_delete_agent_property', 'delete_agent_property');
+add_action('wp_ajax_delete_agent_property', 'delete_agent_property');
 
 function keystone_handle_login() {
     check_ajax_referer('keystone_auth_nonce', 'security');
@@ -255,21 +270,29 @@ add_action('wp_ajax_keystone_login_user', 'keystone_handle_login');
 
 
 function keystone_register_custom_roles() {
-    if(! get_role('real_estate_agent')) {
-        add_role(
-            'real_estate_agent',
-            'Agent',
-            array(
-                'read' => true,
-                'upload_files' => true,
-                'edit_posts' => true,
-                'publish_posts' => true
-            )
-        );
+    if (get_role('real_estate_agent')) {
+        remove_role('real_estate_agent');
     }
+
+    add_role(
+        'real_estate_agent',
+        'Agent',
+        array(
+            'read'                   => true,
+            'upload_files'           => true,
+            // Standard baseline capabilities
+            'edit_posts'             => true,
+            'publish_posts'          => true,
+            'edit_published_posts'   => true,
+            'delete_posts'           => true,
+            'delete_published_posts' => true,
+            // Explicitly prevent editing or deleting other agents' listings:
+            'edit_others_posts'      => false,
+            'delete_others_posts'    => false,
+            // Ensure they can manage their own media/uploads safely
+        )
+    );
 }
-
-
 add_action('init', 'keystone_register_custom_roles');
 
 

@@ -54,7 +54,7 @@
     <h2>Add New Property</h2>
 </div>
 
-<form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="property-submission-form" class="dashboard-form" enctype="multipart/form-data">   
+<form action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" method="POST" id="property-submission-form" class="dashboard-form" enctype="multipart/form-data">   
 <?php wp_nonce_field('agent_dashboard_nonce', 'security'); ?>
 <input type="hidden" name="action" value="save_agent_property">
 <input type="hidden" name="property_id" value="<?php echo esc_attr($property_id); ?>">

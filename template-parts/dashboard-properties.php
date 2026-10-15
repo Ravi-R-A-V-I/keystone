@@ -41,7 +41,7 @@ $properties = new WP_Query($args); ?>
         </div>
         <div class="property-card-actions">
             <a href="?tab=edit-property&property_id=<?php echo esc_attr($property_id); ?>" class="btn btn-outline">Edit</a>
-            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+            <form action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" method="POST">
                 <?php wp_nonce_field('agent_dashboard_nonce', 'security'); ?>
                 <input type="hidden" name="action" value="delete_agent_property">
                 <input type="hidden" name="property_id" value="<?php echo esc_attr($property_id); ?>">
