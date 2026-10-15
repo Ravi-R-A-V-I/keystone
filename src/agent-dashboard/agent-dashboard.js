@@ -27,7 +27,7 @@ const agentAvatar = document.getElementById("agent-avatar");
 const avatarPreview = document.querySelector("#preview-image");
 const uploadText = document.getElementById("upload-text");
 
-if (avatarPreview && !avatarPreview.src) {
+if (avatarPreview && !avatarPreview.getAttribute("src")) {
   avatarPreview.style.display = "none";
   uploadText.style.display = "block";
 }
