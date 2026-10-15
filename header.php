@@ -5,8 +5,9 @@
  * @package Keystone
  */
 
-if(function_exists('do_blocks')) {
-    $header_ui = do_blocks('<!-- wp:create-block/keystone-header {"logoUrl":"http://localhost:10023/wp-content/uploads/2026/10/keyston-logo-1-scaled-e1791378107128.jpeg","logoId":293} /-->');
+if (function_exists('do_blocks')) {
+    $logo_url = home_url('/wp-content/uploads/2026/10/keyston-logo-1-scaled-e1791378107128.jpeg');
+    $header_ui = do_blocks('<!-- wp:create-block/keystone-header {"logoUrl":"' . esc_url($logo_url) . '","logoId":293} /-->');
 }
 ?>
 
