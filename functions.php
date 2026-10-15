@@ -420,7 +420,6 @@ function query_filter_by_page($query, $block) {
     } elseif (is_page('favorites')) {
 
         if(!is_user_logged_in()) {
-            // get_template_part();
             $query['post__in'] = array(0);
         }else {
                $user_id = get_current_user_id();
@@ -438,6 +437,15 @@ function query_filter_by_page($query, $block) {
 }
 
 add_filter('query_loop_block_query_vars', 'query_filter_by_page', 10, 2);
+
+
+
+add_action('template_redirect', function() {
+    if(is_page('favorites') && !is_user_logged_in()) {
+        wp_safe_redirect(home_url('/login'));
+        exit;
+    }
+});
 
 
 
