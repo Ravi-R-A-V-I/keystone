@@ -31,6 +31,6 @@ $unique_id = wp_unique_id( 'p-' );
     <hr class="footer-divider" />
 
     <div class="footer-bottom">
-        <p>Developed by <strong>Ravi</strong> | <a href="https://github.com/your-username/your-repo" target="_blank" rel="noopener">GitHub Repository</a></p>
+        <p>Developed by <strong>Ravi</strong> | <a href="https://github.com/Ravi-R-A-V-I" target="_blank" rel="noopener">GitHub Repository</a></p>
     </div>
 </footer>
