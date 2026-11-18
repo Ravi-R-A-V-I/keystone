@@ -12,10 +12,10 @@ get_header();
 <div id="register-message" class="keystone-auth-message"></div>
 <form id="register-form" class="keystone-auth-form">
     <h1>Register</h1>
-    <input type="text" class="keystone-form-input" placeholder="Email" name="email" id="register-email">
-    <input type="text" class="keystone-form-input" placeholder="Username" name="username" id="register-username">
-    <input type="password" class="keystone-form-input" placeholder="Password" name="password" id="register-password">
-    <input type="password" class="keystone-form-input" placeholder="Confirm Password" name="confirm-password" id="register-confirm-password">
+    <input type="text" class="keystone-form-input" placeholder="Email" name="email" id="register-email" required>
+    <input type="text" class="keystone-form-input" placeholder="Username" name="username" id="register-username" required>
+    <input type="password" class="keystone-form-input" placeholder="Password" name="password" id="register-password" required>
+    <input type="password" class="keystone-form-input" placeholder="Confirm Password" name="confirm-password" id="register-confirm-password" required>
     <div class="keystone-checkbox-wrapper">
       <input type="checkbox" class="keystone-form-checkbox" name="agent" id="register-agent-checkbox"> 
       <label for="register-agent-checkbox">Register as Agent</label>

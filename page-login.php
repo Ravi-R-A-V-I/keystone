@@ -10,8 +10,8 @@ get_header();
 <form id="login-form" class="keystone-auth-form">
     <div id="keystone-login-fields">
         <h1>Login</h1>
-        <input type="text" class="keystone-form-input" placeholder="Username" name="username" id="login-username">
-        <input type="password" class="keystone-form-input" placeholder="Password" name="password" id="login-password">
+        <input type="text" class="keystone-form-input" placeholder="Username" name="username" id="login-username" required>
+        <input type="password" class="keystone-form-input" placeholder="Password" name="password" id="login-password" required>
         <button class="keystone-submit-btn" type="submit">Login</button>
         <p>Don't have an account? <a href="<?php echo esc_url(home_url('register')); ?>">Register</a></p>
     </div>
