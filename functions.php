@@ -256,6 +256,11 @@ add_action('wp_ajax_delete_agent_property', 'delete_agent_property');
 
 function keystone_handle_login() {
     check_ajax_referer('keystone_auth_nonce', 'security');
+    if (empty($_POST['username']) || empty($_POST['password'])) {
+    wp_send_json_error(array(
+        'message' => 'Username and password are required.'
+    ));
+}
     $username = sanitize_text_field($_POST['username']);
     $password = $_POST['password'];
     $user = wp_authenticate($username, $password);
@@ -325,6 +330,11 @@ add_action('after_setup_theme', 'keystone_hide_admin_bar');
 
 function keystone_handle_register() {
     check_ajax_referer('keystone_auth_nonce', 'security');
+    if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password'])) {
+    wp_send_json_error(array(
+        'message' => 'All fields are required.'
+    ));
+}
     if(username_exists(sanitize_text_field($_POST['username'])) || email_exists(sanitize_email($_POST['email']))) {
         wp_send_json_error(array(
             'message' => 'Username or email already exists',
